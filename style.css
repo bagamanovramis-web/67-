@@ -1,13 +1,18 @@
 body {
-    background-color:darkgray;
-    color:blue;
-    text-align:center;
+    background-color: darkgray;
+    color: blue;
+    text-align: center;
 }
+
 button {
-    background-color:darkgray;
+    background-color: darkgray;
     border: none;
 }
+
+button img {
+    transition: transform 0.1 s;
+}
+
 button:active img {
     transform: scale (0.9);
-    transition: transform 0.1 s;
 }
