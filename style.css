@@ -1,13 +1,13 @@
 body {
-    background-color:grey;
-    text-align: center;
-}
-h1 {
-    color:yellow;
+    background-color:darkgray;
+    color:blue;
+    text-align:center;
 }
 button {
-    border-radius:10 px;
+    background-color:darkgray;
+    border: none;
 }
-button:hover {
-    background-color:red;
+button:active img {
+    transform: scale(0.9);
+    transition: transform 0.1s;
 }
