@@ -1,5 +1,5 @@
-let clicks = 0;
-function clickButton() {
+letclicks = 0;
+functionclickButton() {
     clicks++;
     document.getElementById("score").innerText= clicks;
 }
