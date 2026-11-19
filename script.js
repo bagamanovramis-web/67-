@@ -1,4 +1,5 @@
-function randomNumber() {
-    let num=Math.floor(Math.random()*10);
-    document.write(num);
+let clicks = 0;
+function clickButton() {
+    clicks++;
+    document.getElementById("score").innerText= clicks;
 }
