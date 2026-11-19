@@ -1,0 +1,13 @@
+body {
+    background-color:grey;
+    text-align: center;
+}
+h1 {
+    color:yellow;
+}
+button {
+    border-radius:10 px;
+}
+button:hover {
+    background-color:red;
+}
