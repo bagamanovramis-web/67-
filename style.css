@@ -29,6 +29,8 @@ h2 {
 button {
     width: 200px;
     height: 200px;
+     object-fit: contain;
+    transition: transform 0.1s;
 }
 @media (max-width: 600px) {
     h1 {
@@ -43,5 +45,7 @@ button {
     button {
         width: 280px;
         height: 280px;
+         object-fit: contain;
+    transition: transform 0.1s;
     }
 }
