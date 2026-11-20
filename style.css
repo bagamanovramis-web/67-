@@ -1,11 +1,13 @@
 body {
-    background-color: darkgray;
-    color: blue;
+    background: linear-gradient(135deg, #172554, #2563eb, #0f172a);
+    color: #eaf3ff;
     text-align: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 button {
-    background-color: darkgray;
+    background: transparent;
     border: none;
     width: 200px;
     height: 200px;
