@@ -1,5 +1,5 @@
 body {
-    background-color: linear-gradient(135deg, #172554, #2563eb, #0f172a);
+    background: linear-gradient(135deg, #172554, #2563eb, #0f172a);
     color: #eaf3ff;
     text-align: center;
     min-height: 100vh;
@@ -7,11 +7,12 @@ body {
 }
 
 button {
-    background-color: transparent;
+    background: transparent;
     border: none;
     width: 200px;
     height: 200px;
 }
+
 button:active img {
     transform: scale(0.8);
 }
@@ -21,38 +22,42 @@ button img {
     height: 100%;
     object-fit: contain;
 }
-}
+
 h1 {
     font-size: 36px;
 }
+
 p {
     font-size: 22px;
 }
+
 h2 {
     font-size: 32px;
 }
-button {
-    width: 200px;
-    height: 200px;
-}
+
 @media (max-width: 600px) {
     h1 {
-        font-size:42px;
+        font-size: 42px;
     }
+
     p {
         font-size: 28px;
     }
+
     h2 {
         font-size: 40px;
     }
+
     button {
         width: 280px;
         height: 280px;
     }
 }
+
 .version {
     position: fixed;
     right: 10px;
     bottom: 10px;
     font-size: 14px;
-    color: blue;
+    color: #eaf3ff;
+}
