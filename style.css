@@ -72,13 +72,13 @@ h2 {
     pointer-events: none;
     animation: fly-up 0.7s forwards;
 }
-@keyframes fly-ap {
+@keyframes fly-up {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translate(-50%, 0);
     }
     to {
         opacity: 0;
-        trasform: translate(-50%, -70px);
+        transform: translate(-50%, -70px);
     }
 }
