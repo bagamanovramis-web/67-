@@ -11,6 +11,7 @@ button {
     border: none;
     width: 200px;
     height: 200px;
+    position: relative;
 }
 
 button:active img {
@@ -60,4 +61,24 @@ h2 {
     bottom: 10px;
     font-size: 14px;
     color: #eaf3ff;
+}
+.plus-one {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    pointer-events: none;
+    animation: fly-up 0.7s forwards;
+}
+@keyframes fly-ap {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 0);
+    }
+    to {
+        opacity: 0;
+        trasform: translate(-50%, -70px);
+    }
 }
