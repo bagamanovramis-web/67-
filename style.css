@@ -10,12 +10,13 @@ button {
     width: 150px;
     height: 150px;
 }
-
+button:active img {
+    transform: scale(0.9);
+}
 button img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.1s;
 }
 h1 {
     font-size: 36px;
@@ -29,8 +30,6 @@ h2 {
 button {
     width: 200px;
     height: 200px;
-     object-fit: contain;
-    transition: transform 0.1s;
 }
 @media (max-width: 600px) {
     h1 {
@@ -45,7 +44,5 @@ button {
     button {
         width: 280px;
         height: 280px;
-         object-fit: contain;
-    transition: transform 0.1s;
     }
 }
