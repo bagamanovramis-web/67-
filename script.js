@@ -1,4 +1,6 @@
 let clicks = Number(localStorage.getItem("clicks")) || 0;
+let record = Number(localStorage.getItem("record")) || 0;
+document.getElementById("record").innerText = record;
 document.getElementById("score").innerText=clicks;
 let clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
 let soundEnabled = true;
@@ -13,6 +15,11 @@ function clickButton() {
         sound.play();
     }
     clicks++;
+    if (clicks > record) {
+        record = clicks;
+        localStorage.setItem("record", record);
+        document.getElementByID("record").innerText = record;
+    }
     localStorage.setItem("clicks", clicks);
     document.getElementById("score").innerText = clicks;
 
