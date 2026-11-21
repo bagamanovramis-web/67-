@@ -1,9 +1,17 @@
 let clicks = Number(localStorage.getItem("clicks")) || 0;
 document.getElementById("score").innerText=clicks;
 let clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
+let soundEnabled = true;
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+    document.getElementById("soundButton").innerText =
+        soundEnabled ? " Звук: Вкл." : " Звук: Выкл.:;
+}
 function clickButton() {
-    let sound = clickSound.cloneNode();
-sound.play();
+    if (soundEnabled) {
+        let sound = clickSound.cloneNode();
+        sound.play();
+    }
     clicks++;
     localStorage.setItem("clicks", clicks);
     document.getElementById("score").innerText = clicks;
