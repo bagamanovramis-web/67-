@@ -1,11 +1,7 @@
 let clicks = Number(localStorage.getItem("clicks")) || 0;
 document.getElementById("score").innerText=clicks;
-let clickSound = new Audio("pipa_chirp (1).mp3");
-clickSound.preload = "auto";
+let clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
 function clickButton() {
-    clickSound.pause();
-    clickSound.currentTime = 0;
-    clickSound.play();
     clicks++;
     localStorage.setItem("clicks", clicks);
     document.getElementById("score").innerText = clicks;
