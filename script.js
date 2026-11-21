@@ -6,6 +6,7 @@ function toggleSound() {
     soundEnabled = !soundEnabled;
     document.getElementById("soundButton").innerText =
       soundEnabled ? "Звук: Вкл." : "Звук: Выкл.";
+}
 function clickButton() {
     if (soundEnabled) {
         let sound = clickSound.cloneNode();
