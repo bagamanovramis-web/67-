@@ -15,3 +15,8 @@ function clickButton() {
         plus.remove();
     }, 700);
 }
+function resetClicks() {
+    clicks=0;
+    localStorage.setItem("clicks", clicks);
+    document.getElementById("score").innerText=clicks;
+}
