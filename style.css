@@ -104,3 +104,14 @@ h2 {
     font-size: 16px;
     cursor: pointer;
 }
+body.blue {
+    background: linear-gradient(135deg, #172554, #2563eb, #0f172a);
+}
+
+body.white {
+    background: linear-gradient(135deg, #ffffff, #d1d5db, #f3f4f6);
+}
+
+body.purple {
+    background: linear-gradient(135deg, #581c87, #a855f7, #312e81);
+}
