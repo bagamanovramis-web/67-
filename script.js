@@ -18,7 +18,7 @@ function clickButton() {
     if (clicks > record) {
         record = clicks;
         localStorage.setItem("record", record);
-        document.getElementByID("record").innerText = record;
+        document.getElementById("record").innerText = record;
     }
     localStorage.setItem("clicks", clicks);
     document.getElementById("score").innerText = clicks;
