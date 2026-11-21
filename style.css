@@ -115,3 +115,13 @@ body.white {
 body.purple {
     background: linear-gradient(135deg, #581c87, #a855f7, #312e81);
 }
+#backgroundButton {
+    width: auto;
+    height: auto;
+    background: #2563eb;
+    color: white;
+    border: 2px solid #93c5fd;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
