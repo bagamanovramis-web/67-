@@ -38,3 +38,12 @@ function resetClicks() {
     localStorage.setItem("clicks", clicks);
     document.getElementById("score").innerText=clicks;
 }
+let backgrounds = ["blue", "white", "purple"];
+let currentBackground = 0;
+function changeBackground() {
+    currentBackground++;
+    if (currentBackground >= backgrounds.length) {
+        currentBackground = 0;
+    }
+    document.body.className = backgrounds[currentBackground];
+}
