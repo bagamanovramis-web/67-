@@ -2,7 +2,7 @@ let clicks = Number(localStorage.getItem("clicks")) || 0;
 document.getElementById("score").innerText=clicks;
 function clickButton() {
     clicks++;
-    localStorage.SetItem("clicks", clicks);
+    localStorage.setItem("clicks", clicks);
     document.getElementById("score").innerText = clicks;
 
     let plus = document.createElement("span");
