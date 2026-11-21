@@ -109,9 +109,9 @@ body.blue {
 }
 
 body.white {
-    background: linear-gradient(135deg, #ffffff, #d1d5db, #f3f4f6);
+    background: linear-gradient(135deg, #ffffff, #d1d1d1, #eeeeee);
+    background-attachment: fixed;
 }
-
 body.purple {
     background: linear-gradient(135deg, #581c87, #a855f7, #312e81);
 }
