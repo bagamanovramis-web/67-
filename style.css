@@ -159,13 +159,15 @@ body.purple {
         gap: 10px;
     }
 
-    .controls button {
-        width: 45px;
-        height: 45px;
-        padding: 4px;
-        font-size: 10px;
-        border-radius: 8px;
-    }
+   .controls button {
+    width: 58px;
+    height: 22vh;
+    min-height: 100px;
+    max-height: 180px;
+    padding: 4px;
+    font-size: 10px;
+    border-radius: 10px;
+}
 
     .game {
         flex: 1;
