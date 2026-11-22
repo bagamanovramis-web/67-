@@ -124,3 +124,37 @@ body.purple {
     padding: 12px 20px;
     font-size: 16px;
     cursor: pointer;
+    .game-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .controls {
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+    }
+    .game {
+        text-align: center;
+    }
+    @media (max-width: 600px) {
+        .game-container {
+            justify-content: flex-start;
+            gap: 10px;
+            padding: 10px;
+        }
+        .controls {
+            width: 100px;
+            flex-shrink: 0;
+        }
+        .game {
+            flex: 1;
+            min-width: 0;
+        }
+        .controls button {
+            width: 100%;
+            font-size: 12px;
+            padding: 8px 4px;
+        }
+    }
