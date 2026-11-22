@@ -27,7 +27,7 @@ function clickButton() {
     plus.className = "plus-one";
     plus.textContent = "+1";
 
-    document.querySelector("button").appendChild(plus);
+    document.querySelector(".game > button").appendChild(plus);
 
     setTimeout(() => {
         plus.remove();
