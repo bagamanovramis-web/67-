@@ -235,3 +235,18 @@ body.purple {
         height: 180px;
     }
 }
+@media (max-width: 600px) {
+    .controls {
+        width: 58px;
+    }
+
+    .controls button {
+        width: 58px;
+        height: 16vh;
+        min-height: 80px;
+        max-height: none;
+        padding: 4px;
+        font-size: 10px;
+        border-radius: 10px;
+    }
+}
