@@ -184,4 +184,14 @@ body.purple {
         border-radius: 10px;
     }
 }
+.game > button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+    outline: none;
+}
 
+.game > button img {
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
