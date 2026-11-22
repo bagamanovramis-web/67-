@@ -6,29 +6,42 @@
 <script src="script.js" defer></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
-        <h1>ПИПА КЛИКЕР</h1>
-        <p>КЛИКАЙ НА ПИПУ</p>
-        <button onclick="clickButton()">
-            <img src="button_transparent.png">
-        </button>
-        <h2 id="score">
-            0
-        </h2>
-       <p>
-           Рекорд: <span id="record">0</span>
-</p>
-        <button id="resetButton" onclick="resetClicks()">
-            Сбросить клики
-        </button>
-        <button id="soundButton" onclick="toggleSound()">
-            Звук: Вкл.
-        </button>
-        <button id="backgroundButton" onclick="changeBackground()">
-            Сменить фон
-        </button>
-        <div class="version">
-            Pipa Clicker v0.5
+  <body>
+    <div class="game-container">
+
+        <div class="controls">
+            <button id="resetButton" onclick="resetClicks()">
+                Сбросить клики
+            </button>
+
+            <button id="soundButton" onclick="toggleSound()">
+                Звук: Вкл.
+            </button>
+
+            <button id="backgroundButton" onclick="changeBackground()">
+                Сменить фон
+            </button>
         </div>
-    </body>
+
+        <div class="game">
+            <h1>ПИПА КЛИКЕР</h1>
+            <p>КЛИКАЙ НА ПИПУ</p>
+
+            <button onclick="clickButton()">
+                <img src="button_transparent.png">
+            </button>
+
+            <h2 id="score">0</h2>
+
+            <p>
+                Рекорд: <span id="record">0</span>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="version">
+        Pipa Clicker v0.5
+    </div>
+</body>
 </html>
