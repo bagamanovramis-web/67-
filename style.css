@@ -12,7 +12,7 @@ body {
     margin: 0;
 }
 
-/* РАСПОЛОЖЕНИЕ ИГРЫ */
+/* ОБЩИЙ КОНТЕЙНЕР */
 .game-container {
     position: relative;
     min-height: 100vh;
@@ -21,11 +21,11 @@ body {
     align-items: center;
 }
 
+/* ИГРОВАЯ ЧАСТЬ */
 .game {
     text-align: center;
 }
 
-/* ЗАГОЛОВКИ И ТЕКСТ */
 h1 {
     font-size: 36px;
 }
@@ -45,6 +45,7 @@ h2 {
     width: 200px;
     height: 200px;
     position: relative;
+    cursor: pointer;
 }
 
 button:active img {
@@ -80,7 +81,7 @@ button img {
     cursor: pointer;
 }
 
-/* ТРИ ФОНА */
+/* ФОНЫ */
 body.blue {
     background: linear-gradient(135deg, #172554, #2563eb, #0f172a);
 }
@@ -135,6 +136,18 @@ body.purple {
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 @media (max-width: 600px) {
 
+    .game-container {
+        justify-content: center;
+        padding-left: 75px;
+        padding-right: 10px;
+    }
+
+    .game {
+        width: 100%;
+        min-width: 0;
+        padding: 0 5px;
+    }
+
     h1 {
         font-size: 30px;
     }
@@ -147,19 +160,16 @@ body.purple {
         font-size: 32px;
     }
 
-    .game {
-        width: 100%;
-        padding: 0 5px;
-    }
-
+    /* КНОПКА ПИПЫ */
     .game > button {
         width: 180px;
         height: 180px;
     }
 
-    /* КОЛОННА КНОПОК СЛЕВА */
+    /* ДЛИННЫЕ КНОПКИ СЛЕВА */
     .controls {
         left: 8px;
+        width: 58px;
         gap: 12px;
     }
 
@@ -167,7 +177,6 @@ body.purple {
         width: 58px;
         height: 16vh;
         min-height: 80px;
-        max-height: none;
         padding: 4px 2px;
         font-size: 9px;
         line-height: 1.2;
@@ -175,3 +184,4 @@ body.purple {
         border-radius: 10px;
     }
 }
+
