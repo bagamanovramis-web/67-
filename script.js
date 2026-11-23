@@ -213,7 +213,7 @@ checkQueenReward();
         localStorage.setItem("clicks", clicks);
         localStorage.setItem("totalClicks", totalClicks);
         localStorage.setItem(storageKey, "used");
-
+       checkQueenReward();
         // Обновление рекорда
         if (clicks > record) {
             record = clicks;
