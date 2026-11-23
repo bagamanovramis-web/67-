@@ -1,4 +1,3 @@
-
 /* =========================
    ОСНОВНОЙ КЛИКЕР
 ========================= */
@@ -9,7 +8,29 @@ const recordElement = document.getElementById("record");
 if (scoreElement && recordElement) {
     let clicks = Number(localStorage.getItem("clicks")) || 0;
     let record = Number(localStorage.getItem("record")) || 0;
+   let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
 
+const rankElement = document.getElementById("rank");
+
+const ranks = [
+    { clicks: 100000, title: "💎 Правая рука Пипы" },
+    { clicks: 10000, title: "🧹 Прислуга Пипы" },
+    { clicks: 5000, title: "⭐ Легенда Пипы" },
+    { clicks: 1000, title: "👑 Поклонник Королевы" },
+    { clicks: 500, title: "🦜 Друг Пипы" },
+    { clicks: 100, title: "🌾 Любитель чумизы" },
+    { clicks: 1, title: "🐥 Знакомый Пипы" }
+];
+
+function updateRank() {
+    const rank = ranks.find(rank => totalClicks >= rank.clicks);
+
+    rankElement.textContent = rank
+        ? rank.title
+        : "🐣 Новичок";
+}
+
+updateRank();
     scoreElement.innerText = clicks;
     recordElement.innerText = record;
 
