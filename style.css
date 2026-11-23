@@ -168,15 +168,15 @@ body.purple {
 
 .plus-one {
     position: absolute;
-    top: 10%;
+    top: 25%;
     left: 50%;
     color: white;
     font-size: 28px;
     font-weight: bold;
     pointer-events: none;
     animation: fly-up 0.7s forwards;
+    z-index: 10;
 }
-
 @keyframes fly-up {
     from {
         opacity: 1;
