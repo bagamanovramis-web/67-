@@ -12,6 +12,8 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* ОСНОВНОЙ КЛИКЕР */
+
 .game-container {
     position: relative;
     min-height: 100vh;
@@ -54,7 +56,7 @@ h2 { font-size: 32px; }
     transform: scale(0.8);
 }
 
-/* Боковые кнопки */
+/* БЛОК БОКОВЫХ КНОПОК И ПИПЫ */
 
 .side-buttons {
     position: absolute;
@@ -92,6 +94,13 @@ h2 { font-size: 32px; }
 .feed-button:hover,
 #startMiniGame:hover {
     background: #1d4ed8;
+}
+
+.pipa-center img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    display: block;
 }
 
 /* О ПИПЕ */
@@ -219,6 +228,7 @@ body.purple {
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 
 @media (max-width: 600px) {
+
     .game-container {
         justify-content: center;
         padding-left: 75px;
@@ -261,6 +271,11 @@ body.purple {
         border-radius: 10px;
     }
 
+    .pipa-center img {
+        width: 65px;
+        height: 65px;
+    }
+
     .feed-button {
         width: 65px;
         min-height: 80px;
@@ -282,15 +297,4 @@ body.purple {
         width: 70px;
         height: 70px;
     }
-}
-.side-buttons {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.pipa-center img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
 }
