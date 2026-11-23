@@ -517,7 +517,7 @@ body.feathers {
     color: white;
     cursor: pointer;
 }
-
+}
 @keyframes queenAppear {
     from {
         opacity: 0;
