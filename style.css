@@ -703,3 +703,27 @@ body.feathers {
         overflow-x: hidden;
     }
 }
+@media (min-width: 701px) {
+    .controls {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.controls .stats-button {
+    order: 10;
+}
+
+@media (max-width: 700px) {
+    .controls {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .controls .stats-button {
+        order: 10;
+        width: 85px;
+        height: 90px;
+        min-height: 90px;
+    }
+}
