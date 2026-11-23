@@ -490,47 +490,31 @@ body.feathers {
 ========================= */
 .promo-box {
     position: fixed;
-    bottom: 15px;
-    left: 15px;
+    bottom: 8px;
+    left: 8px;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 5px;
-    padding: 10px;
-    background: rgba(15, 23, 42, 0.85);
+    padding: 6px;
+    background: rgba(15, 23, 42, 0.9);
     border: 1px solid rgba(147, 197, 253, 0.5);
-    border-radius: 12px;
+    border-radius: 10px;
     z-index: 100;
     width: max-content;
-    max-width: calc(100vw - 30px);
-    box-sizing: border-box
+    max-width: calc(100vw - 16px);
 }
-    .promo-box input {
-    width: 100px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-        box-sizing: border-box;
+
+.promo-box input {
+    width: 90px;
+    min-width: 0;
+    padding: 7px;
+    box-sizing: border-box;
 }
+
 .promo-box button {
     width: auto;
-    padding: 9px 12px;
-    border-radius: 7px;
-    background: #2563eb;
-    color: white;
-    cursor: pointer;
-}
-}
-@keyframes queenAppear {
-    from {
-        opacity: 0;
-        transform: scale(0.7);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    padding: 8px;
+    font-size: 13px;
 }
 /* =========================
    КНОПКА СТАТИСТИКИ
