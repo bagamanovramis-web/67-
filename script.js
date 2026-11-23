@@ -136,7 +136,7 @@ window.activatePromo = function() {
         }
     },
        "PIPA2027": {
-          clicks: 2027
+          clicks: 2027,
    message: "Получено 2027 кликов!"
 };
     // ПРОВЕРКА КОДА
