@@ -571,6 +571,7 @@ body.feathers {
     display: flex;
     align-items: stretch;
     gap: 15px;
+    width: 100%;
 }
 
 .about-layout .stats-button {
