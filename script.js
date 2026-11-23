@@ -1,52 +1,77 @@
-let clicks = Number(localStorage.getItem("clicks")) || 0;
-let record = Number(localStorage.getItem("record")) || 0;
-document.getElementById("record").innerText = record;
-document.getElementById("score").innerText=clicks;
-let clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
-let soundEnabled = true;
-function toggleSound() {
-    soundEnabled = !soundEnabled;
-    document.getElementById("soundButton").innerText =
-      soundEnabled ? "Звук: Вкл." : "Звук: Выкл.";
-}
-function clickButton() {
-    if (soundEnabled) {
-        let sound = clickSound.cloneNode();
-        sound.play();
-    }
-    clicks++;
-    if (clicks > record) {
-        record = clicks;
-        localStorage.setItem("record", record);
-        document.getElementById("record").innerText = record;
-    }
-    localStorage.setItem("clicks", clicks);
-    document.getElementById("score").innerText = clicks;
 
-    let plus = document.createElement("span");
-    plus.className = "plus-one";
-    plus.textContent = "+1";
+/* =========================
+   ОСНОВНОЙ КЛИКЕР
+========================= */
 
-    document.querySelector(".game > button").appendChild(plus);
+const scoreElement = document.getElementById("score");
+const recordElement = document.getElementById("record");
 
-    setTimeout(() => {
-        plus.remove();
-    }, 700);
-}
-function resetClicks() {
-    clicks=0;
-    localStorage.setItem("clicks", clicks);
-    document.getElementById("score").innerText=clicks;
-}
-let backgrounds = ["blue", "white", "purple"];
-let currentBackground = 0;
-function changeBackground() {
-    currentBackground++;
-    if (currentBackground >= backgrounds.length) {
-        currentBackground = 0;
+if (scoreElement && recordElement) {
+    let clicks = Number(localStorage.getItem("clicks")) || 0;
+    let record = Number(localStorage.getItem("record")) || 0;
+
+    scoreElement.innerText = clicks;
+    recordElement.innerText = record;
+
+    let clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
+    let soundEnabled = true;
+
+    function toggleSound() {
+        soundEnabled = !soundEnabled;
+
+        document.getElementById("soundButton").innerText =
+            soundEnabled ? "Звук: Вкл." : "Звук: Выкл.";
     }
-    document.body.className = backgrounds[currentBackground];
+
+    function clickButton() {
+        if (soundEnabled) {
+            let sound = clickSound.cloneNode();
+            sound.play();
+        }
+
+        clicks++;
+
+        if (clicks > record) {
+            record = clicks;
+            localStorage.setItem("record", record);
+            recordElement.innerText = record;
+        }
+
+        localStorage.setItem("clicks", clicks);
+        scoreElement.innerText = clicks;
+
+        let plus = document.createElement("span");
+        plus.className = "plus-one";
+        plus.textContent = "+1";
+
+        document.querySelector(".game > button").appendChild(plus);
+
+        setTimeout(() => plus.remove(), 700);
+    }
+
+    function resetClicks() {
+        clicks = 0;
+        localStorage.setItem("clicks", clicks);
+        scoreElement.innerText = clicks;
+    }
+
+    let backgrounds = ["blue", "white", "purple"];
+    let currentBackground = 0;
+
+    function changeBackground() {
+        currentBackground++;
+
+        if (currentBackground >= backgrounds.length) {
+            currentBackground = 0;
+        }
+
+        document.body.className = backgrounds[currentBackground];
+    }
 }
+
+/* =========================
+   МИНИ-ИГРА
+========================= */
 
 const miniArea = document.getElementById("miniGameArea");
 
@@ -59,6 +84,7 @@ if (miniArea) {
     let miniRunning = false;
     let spawnTimer;
     let gameTimer;
+    let fallTimers = [];
 
     // Движение Пипы
     function movePipa(event) {
@@ -83,7 +109,6 @@ if (miniArea) {
         if (!miniRunning) return;
 
         const item = document.createElement("div");
-
         const random = Math.random();
 
         let type;
@@ -104,6 +129,7 @@ if (miniArea) {
         item.style.top = "0px";
         item.style.left = Math.random() * 90 + "%";
         item.style.fontSize = "27px";
+        item.style.zIndex = "1";
 
         miniArea.appendChild(item);
 
@@ -145,23 +171,41 @@ if (miniArea) {
                 item.remove();
             }
         }, 20);
+
+        fallTimers.push(fallTimer);
     }
 
-    // Конец игры
-    function endGame() {
+    // Очистка предметов
+    function clearItems() {
+        fallTimers.forEach(timer => clearInterval(timer));
+        fallTimers = [];
+
+        miniArea.querySelectorAll("div").forEach(item => item.remove());
+    }
+
+    // Остановка игры
+    function stopGame() {
         miniRunning = false;
 
         clearInterval(spawnTimer);
         clearTimeout(gameTimer);
+        clearItems();
+    }
+
+    // Конец игры
+    function endGame() {
+        stopGame();
 
         startMiniButton.textContent = "Играть ещё раз";
 
         alert("Пипа поймала какашку! Очки: " + miniScore);
     }
 
-    // Запуск игры
+    // Начало игры
     startMiniButton.addEventListener("click", () => {
         if (miniRunning) return;
+
+        clearItems();
 
         miniScore = 0;
         miniScoreText.textContent = "0";
@@ -173,12 +217,11 @@ if (miniArea) {
 
         gameTimer = setTimeout(() => {
             if (miniRunning) {
-                miniRunning = false;
-                clearInterval(spawnTimer);
+                stopGame();
 
                 startMiniButton.textContent = "Играть ещё раз";
 
-                alert("Время вышло! Пипа набрала " + miniScore + " очков!");
+                alert("Время вышло! Очки: " + miniScore);
             }
         }, 30000);
     });
