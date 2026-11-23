@@ -33,39 +33,48 @@ if (scoreElement && recordElement) {
             const notification = document.getElementById("rankNotification");
             const notificationText = document.getElementById("rankNotificationText");
 
-            notificationText.textContent = newRank;
-            notification.classList.add("show");
+            if (notification && notificationText) {
+                notificationText.textContent = newRank;
+                notification.classList.add("show");
 
-            setTimeout(() => {
-                notification.classList.remove("show");
-            }, 3000);
+                setTimeout(() => {
+                    notification.classList.remove("show");
+                }, 3000);
+            }
         }
 
         currentRank = newRank;
-        rankElement.textContent = newRank;
+
+        if (rankElement) {
+            rankElement.textContent = newRank;
+        }
     }
 
     updateRank();
 
-    scoreElement.innerText = clicks;
-    recordElement.innerText = record;
+    scoreElement.textContent = clicks;
+    recordElement.textContent = record;
 
     // Звук
-    let clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
+    const clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
     let soundEnabled = true;
 
-    function toggleSound() {
+    window.toggleSound = function() {
         soundEnabled = !soundEnabled;
 
-        document.getElementById("soundButton").innerText =
-            soundEnabled ? "Звук: Вкл." : "Звук: Выкл.";
-    }
+        const soundButton = document.getElementById("soundButton");
+
+        if (soundButton) {
+            soundButton.textContent =
+                soundEnabled ? "Звук: Вкл." : "Звук: Выкл.";
+        }
+    };
 
     // Клик по Пипе
-    function clickButton() {
+    window.clickButton = function() {
         if (soundEnabled) {
-            let sound = clickSound.cloneNode();
-            sound.play();
+            const sound = clickSound.cloneNode();
+            sound.play().catch(() => {});
         }
 
         clicks++;
@@ -77,33 +86,38 @@ if (scoreElement && recordElement) {
         if (clicks > record) {
             record = clicks;
             localStorage.setItem("record", record);
-            recordElement.innerText = record;
+            recordElement.textContent = record;
         }
 
         localStorage.setItem("clicks", clicks);
-        scoreElement.innerText = clicks;
+        scoreElement.textContent = clicks;
 
-        let plus = document.createElement("span");
-        plus.className = "plus-one";
-        plus.textContent = "+1";
+        const pipaButton = document.querySelector(".pipa-button");
 
-        document.querySelector(".game > button").appendChild(plus);
+        if (pipaButton) {
+            const plus = document.createElement("span");
+            plus.className = "plus-one";
+            plus.textContent = "+1";
 
-        setTimeout(() => plus.remove(), 700);
-    }
+            pipaButton.appendChild(plus);
+
+            setTimeout(() => plus.remove(), 700);
+        }
+    };
 
     // Сброс кликов
-    function resetClicks() {
+    window.resetClicks = function() {
         clicks = 0;
+
         localStorage.setItem("clicks", clicks);
-        scoreElement.innerText = clicks;
-    }
+        scoreElement.textContent = clicks;
+    };
 
     // Смена фона
-    let backgrounds = ["blue", "white", "purple"];
+    const backgrounds = ["blue", "white", "purple"];
     let currentBackground = 0;
 
-    function changeBackground() {
+    window.changeBackground = function() {
         currentBackground++;
 
         if (currentBackground >= backgrounds.length) {
@@ -111,75 +125,78 @@ if (scoreElement && recordElement) {
         }
 
         document.body.className = backgrounds[currentBackground];
-    }
+    };
 
-    /* =================================
-   ПРОМОКОДЫ
-================================= */
+    /* =========================
+       ПРОМОКОДЫ
+    ========================= */
 
-window.activatePromo = function() {
-    const input = document.getElementById("promoInput");
-    const message = document.getElementById("promoMessage");
+    window.activatePromo = function() {
+        const input = document.getElementById("promoInput");
+        const message = document.getElementById("promoMessage");
 
-    const code = input.value.trim().toUpperCase();
+        if (!input || !message) return;
 
-    // НАСТРОЙКА ПРОМОКОДОВ
-    const promoCodes = {
-        "PIPA67": {
-            clicks: 6767,
-            message: "🎉 Получено 6767 кликов!"
-        },
+        const code = input.value.trim().toUpperCase();
 
-        "PIPA100": {
-            clicks: 10000,
-            message: "👑 Получено 10 000 кликов!"
-        },
-       "PIPA2027": {
-          clicks: 2027,
-   message: "Получено 2027 кликов!"
-          }
-};
-    // ПРОВЕРКА КОДА
-    if (!promoCodes[code]) {
-        message.textContent = "❌ Неверный промокод!";
-        return;
-    }
+        const promoCodes = {
+            "PIPA67": {
+                clicks: 6767,
+                message: "🎉 Получено 6767 кликов!"
+            },
 
-    // ПРОВЕРКА ПОВТОРНОГО ИСПОЛЬЗОВАНИЯ
-    const storageKey = "promo_" + code;
+            "PIPA100": {
+                clicks: 10000,
+                message: "👑 Получено 10 000 кликов!"
+            },
 
-    if (localStorage.getItem(storageKey)) {
-        message.textContent = "❌ Промокод уже использован!";
-        return;
-    }
+            "PIPA2027": {
+                clicks: 2027,
+                message: "🎊 Получено 2027 кликов!"
+            }
+        };
 
-    // НАЧИСЛЕНИЕ КЛИКОВ
-    const bonus = promoCodes[code].clicks;
+        // Проверка промокода
+        if (!promoCodes[code]) {
+            message.textContent = "❌ Неверный промокод!";
+            return;
+        }
 
-    clicks += bonus;
-    totalClicks += bonus;
+        // Проверка повторного использования
+        const storageKey = "promo_" + code;
 
-    localStorage.setItem("clicks", clicks);
-    localStorage.setItem("totalClicks", totalClicks);
-    localStorage.setItem(storageKey, "used");
+        if (localStorage.getItem(storageKey)) {
+            message.textContent = "❌ Промокод уже использован!";
+            return;
+        }
 
-    // ОБНОВЛЕНИЕ РЕКОРДА
-    if (clicks > record) {
-        record = clicks;
-        localStorage.setItem("record", record);
-    }
+        // Начисление кликов
+        const bonus = promoCodes[code].clicks;
 
-    // ОБНОВЛЕНИЕ ИНТЕРФЕЙСА
-    scoreElement.textContent = clicks;
-    recordElement.textContent = record;
+        clicks += bonus;
+        totalClicks += bonus;
 
-    updateRank();
+        localStorage.setItem("clicks", clicks);
+        localStorage.setItem("totalClicks", totalClicks);
+        localStorage.setItem(storageKey, "used");
 
-    // УВЕДОМЛЕНИЕ
-    message.textContent = promoCodes[code].message;
+        // Обновление рекорда
+        if (clicks > record) {
+            record = clicks;
+            localStorage.setItem("record", record);
+        }
 
-    input.value = "";
-};
+        // Обновление интерфейса
+        scoreElement.textContent = clicks;
+        recordElement.textContent = record;
+
+        updateRank();
+
+        message.textContent = promoCodes[code].message;
+        input.value = "";
+    };
+}
+
 /* =========================
    МИНИ-ИГРА
 ========================= */
@@ -274,8 +291,8 @@ if (miniArea) {
                 if (type === "💩") {
                     endGame();
                 } else {
-                    let sound = eatingSound.cloneNode();
-                    sound.play();
+                    const sound = eatingSound.cloneNode();
+                    sound.play().catch(() => {});
 
                     miniScore += points;
                     miniScoreText.textContent = miniScore;
