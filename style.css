@@ -733,3 +733,12 @@ body.feathers {
         margin-right: auto;
     }
 }
+@media (max-width: 700px) {
+    .back-button {
+        display: inline-block;
+        max-width: calc(100% - 24px);
+        box-sizing: border-box;
+        white-space: nowrap;
+        padding: 12px 16px;
+    }
+}
