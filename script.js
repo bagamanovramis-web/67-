@@ -1,3 +1,4 @@
+
 /* =========================
    ОСНОВНОЙ КЛИКЕР
 ========================= */
@@ -8,44 +9,48 @@ const recordElement = document.getElementById("record");
 if (scoreElement && recordElement) {
     let clicks = Number(localStorage.getItem("clicks")) || 0;
     let record = Number(localStorage.getItem("record")) || 0;
-   let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
-   let currentRank = "";
+    let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
+    let currentRank = "";
 
-const rankElement = document.getElementById("rank");
+    const rankElement = document.getElementById("rank");
 
-const ranks = [
-    { clicks: 100000, title: "💎 Правая лапа Пипы" },
-    { clicks: 10000, title: "🧹 Прислуга Пипы" },
-    { clicks: 5000, title: "⭐ Легенда Пипы" },
-    { clicks: 1000, title: "👑 Поклонник Королевы" },
-    { clicks: 500, title: "🍎 Поставщик вкусняшек" },
-    { clicks: 100, title: "🌾 Любитель чумизы" },
-    { clicks: 1, title: "🐥 Знакомый Пипы" }
-];
+    const ranks = [
+        { clicks: 100000, title: "💎 Правая лапа Пипы" },
+        { clicks: 10000, title: "🧹 Прислуга Пипы" },
+        { clicks: 5000, title: "⭐ Легенда Пипы" },
+        { clicks: 1000, title: "👑 Поклонник Королевы" },
+        { clicks: 500, title: "🍎 Поставщик вкусняшек" },
+        { clicks: 100, title: "🌾 Любитель чумизы" },
+        { clicks: 1, title: "🐥 Знакомый Пипы" }
+    ];
 
-function updateRank() {
-    const rank = ranks.find(rank => totalClicks >= rank.clicks);
-    const newRank = rank ? rank.title : "🐣 Новичок";
+    // Звания
+    function updateRank() {
+        const rank = ranks.find(rank => totalClicks >= rank.clicks);
+        const newRank = rank ? rank.title : "🐣 Новичок";
 
-    if (currentRank !== "" && currentRank !== newRank) {
-        const notification = document.getElementById("rankNotification");
-        const notificationText = document.getElementById("rankNotificationText");
+        if (currentRank !== "" && currentRank !== newRank) {
+            const notification = document.getElementById("rankNotification");
+            const notificationText = document.getElementById("rankNotificationText");
 
-        notificationText.textContent = newRank;
-        notification.classList.add("show");
+            notificationText.textContent = newRank;
+            notification.classList.add("show");
 
-        setTimeout(() => {
-            notification.classList.remove("show");
-        }, 3000);
+            setTimeout(() => {
+                notification.classList.remove("show");
+            }, 3000);
+        }
+
+        currentRank = newRank;
+        rankElement.textContent = newRank;
     }
 
-    currentRank = newRank;
-    rankElement.textContent = newRank;
-}
-updateRank();
+    updateRank();
+
     scoreElement.innerText = clicks;
     recordElement.innerText = record;
 
+    // Звук
     let clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
     let soundEnabled = true;
 
@@ -56,6 +61,7 @@ updateRank();
             soundEnabled ? "Звук: Вкл." : "Звук: Выкл.";
     }
 
+    // Клик по Пипе
     function clickButton() {
         if (soundEnabled) {
             let sound = clickSound.cloneNode();
@@ -63,9 +69,10 @@ updateRank();
         }
 
         clicks++;
-       totalClicks++;
-       localStorage.setItem("totalClicks", totalClicks);
-       updateRank();
+        totalClicks++;
+
+        localStorage.setItem("totalClicks", totalClicks);
+        updateRank();
 
         if (clicks > record) {
             record = clicks;
@@ -85,12 +92,14 @@ updateRank();
         setTimeout(() => plus.remove(), 700);
     }
 
+    // Сброс кликов
     function resetClicks() {
         clicks = 0;
         localStorage.setItem("clicks", clicks);
         scoreElement.innerText = clicks;
     }
 
+    // Смена фона
     let backgrounds = ["blue", "white", "purple"];
     let currentBackground = 0;
 
@@ -103,50 +112,73 @@ updateRank();
 
         document.body.className = backgrounds[currentBackground];
     }
-}
-/* =========================
-   ПРОМОКОДЫ
-========================= */
 
-function activatePromo() {
+    /* =================================
+   ПРОМОКОДЫ
+================================= */
+
+window.activatePromo = function() {
     const input = document.getElementById("promoInput");
     const message = document.getElementById("promoMessage");
 
     const code = input.value.trim().toUpperCase();
 
-    if (code === "PIPA67") {
-        if (localStorage.getItem("promo_PIPA67")) {
-            message.textContent = "❌ Промокод уже использован!";
-            return;
+    // НАСТРОЙКА ПРОМОКОДОВ
+    const promoCodes = {
+        "PIPA67": {
+            clicks: 6767,
+            message: "🎉 Получено 6767 кликов!"
+        },
+
+        "PIPA100": {
+            clicks: 10000,
+            message: "👑 Получено 10 000 кликов!"
         }
-
-        let clicks = Number(localStorage.getItem("clicks")) || 0;
-        let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
-
-        clicks += 67000;
-        totalClicks += 67000;
-
-        localStorage.setItem("clicks", clicks);
-        localStorage.setItem("totalClicks", totalClicks);
-        localStorage.setItem("promo_PIPA67", "used");
-
-        document.getElementById("score").textContent = clicks;
-
-        const record = Number(localStorage.getItem("record")) || 0;
-
-        if (clicks > record) {
-            localStorage.setItem("record", clicks);
-            document.getElementById("record").textContent = clicks;
-        }
-
-        message.textContent = "🎉 Получено 67 000 кликов!";
-        input.value = "";
-
+    },
+       "PIPA2027": {
+          clicks: 2027
+   message: "Получено 2027 кликов!"
+    // ПРОВЕРКА КОДА
+    if (!promoCodes[code]) {
+        message.textContent = "❌ Неверный промокод!";
         return;
     }
 
-    message.textContent = "❌ Неверный промокод!";
-}
+    // ПРОВЕРКА ПОВТОРНОГО ИСПОЛЬЗОВАНИЯ
+    const storageKey = "promo_" + code;
+
+    if (localStorage.getItem(storageKey)) {
+        message.textContent = "❌ Промокод уже использован!";
+        return;
+    }
+
+    // НАЧИСЛЕНИЕ КЛИКОВ
+    const bonus = promoCodes[code].clicks;
+
+    clicks += bonus;
+    totalClicks += bonus;
+
+    localStorage.setItem("clicks", clicks);
+    localStorage.setItem("totalClicks", totalClicks);
+    localStorage.setItem(storageKey, "used");
+
+    // ОБНОВЛЕНИЕ РЕКОРДА
+    if (clicks > record) {
+        record = clicks;
+        localStorage.setItem("record", record);
+    }
+
+    // ОБНОВЛЕНИЕ ИНТЕРФЕЙСА
+    scoreElement.textContent = clicks;
+    recordElement.textContent = record;
+
+    updateRank();
+
+    // УВЕДОМЛЕНИЕ
+    message.textContent = promoCodes[code].message;
+
+    input.value = "";
+};
 /* =========================
    МИНИ-ИГРА
 ========================= */
@@ -159,7 +191,8 @@ if (miniArea) {
     const startMiniButton = document.getElementById("startMiniGame");
 
     let miniScore = 0;
-   const eatingSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
+    const eatingSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
+
     let miniRunning = false;
     let spawnTimer;
     let gameTimer;
@@ -192,15 +225,17 @@ if (miniArea) {
 
         let type;
         let points = 0;
-if (random < 0.55) {
-    type = "🌾";
-    points = 1;
-} else if (random < 0.65) {
-    type = "✨";
-    points = 3;
-} else {
-    type = "💩";
-}
+
+        if (random < 0.55) {
+            type = "🌾";
+            points = 1;
+        } else if (random < 0.65) {
+            type = "✨";
+            points = 3;
+        } else {
+            type = "💩";
+        }
+
         item.textContent = type;
         item.style.position = "absolute";
         item.style.top = "0px";
@@ -237,13 +272,13 @@ if (random < 0.55) {
 
                 if (type === "💩") {
                     endGame();
-               } else {
-    let sound = eatingSound.cloneNode();
-    sound.play();
+                } else {
+                    let sound = eatingSound.cloneNode();
+                    sound.play();
 
-    miniScore += points;
-    miniScoreText.textContent = miniScore;
-}
+                    miniScore += points;
+                    miniScoreText.textContent = miniScore;
+                }
             }
 
             if (y > miniArea.clientHeight) {
@@ -306,4 +341,3 @@ if (random < 0.55) {
         }, 30000);
     });
 }
-
