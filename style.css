@@ -298,3 +298,26 @@ body.purple {
         height: 70px;
     }
 }
+.game-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.game-content .feed-button {
+    width: 130px;
+    min-height: 70px;
+}
+
+@media (max-width: 600px) {
+    .game-content {
+        gap: 8px;
+    }
+
+    .game-content .feed-button {
+        width: 75px;
+        padding: 5px;
+        font-size: 11px;
+    }
+}
