@@ -1,60 +1,72 @@
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Кликер Пипа</title>
-        <link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-  <body>
+<head>
+    <title>Кликер Пипа</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
     <div class="game-container">
+
         <div class="about">
-            <h2>
-                О пипе 🦜
-            </h2>
+            <h2>О Пипе 🦜</h2>
             <p>
-                Пипа - волнистый поугайчик и главная героиня этой игры.
-                Она любит чумизу, свой стенд, и фрукты.
+                Пипа - волнистый попугайчик и главная героиня этой игры.
+                Она любит чумизу, свой стенд и фрукты.
                 Именно Пипа вдохновила меня создать этот кликер!
             </p>
-            <div class="mini-game">
-    <h2>🌾 Покорми Пипу</h2>
+        </div>
 
-    <div class="mini-game-area" id="miniGameArea">
-        <div id="miniPipa"></div>
-    </div>
-
-    <p>Очки: <span id="miniScore">0</span></p>
-
-    <button id="startMiniGame" onclick="startMiniGame()">
-        Начать игру
-    </button>
-</div>
         <div class="controls">
             <button id="resetButton" onclick="resetClicks()">
                 Сбросить клики
             </button>
+
             <button id="soundButton" onclick="toggleSound()">
                 Звук: Вкл.
             </button>
+
             <button id="backgroundButton" onclick="changeBackground()">
                 Сменить фон
             </button>
         </div>
+
         <div class="game">
             <h1>ПИПА КЛИКЕР</h1>
             <p>КЛИКАЙ НА ПИПУ</p>
+
             <button onclick="clickButton()">
                 <img src="button_transparent.png">
             </button>
+
             <h2 id="score">0</h2>
+
             <p>
-                Рекорд: <span id="record">0</span>
-            </p>
+                Рекорд: <span id="record">0</span></p>
         </div>
+
     </div>
+
+    <div class="mini-game">
+        <h2>🌾 Покорми Пипу</h2>
+
+        <div class="mini-game-area" id="miniGameArea">
+            <div id="miniPipa">🦜</div>
+        </div>
+
+        <p>Очки: <span id="miniScore">0</span></p>
+
+        <button id="startMiniGame" onclick="startMiniGame()">
+            Начать игру
+        </button>
+    </div>
+
     <div class="version">
-        Pipa Clicker v0.6
+        Pipa Clicker v0.7
     </div>
+
 </body>
 </html>
