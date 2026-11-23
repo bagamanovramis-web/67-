@@ -283,3 +283,14 @@ body.purple {
         height: 70px;
     }
 }
+.side-buttons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.pipa-center img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
