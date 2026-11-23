@@ -10,6 +10,42 @@ if (scoreElement && recordElement) {
     let clicks = Number(localStorage.getItem("clicks")) || 0;
     let record = Number(localStorage.getItem("record")) || 0;
     let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
+   // ПОЗДРАВЛЕНИЕ КОРОЛЕВЫ
+
+function checkQueenReward() {
+    if (
+        totalClicks >= 10000 &&
+        !localStorage.getItem("queenRewardUsed")
+    ) {
+        localStorage.setItem("queenRewardUsed", "yes");
+
+        const modal = document.getElementById("queenModal");
+        const video = document.getElementById("queenVideo");
+
+        if (modal) {
+            modal.style.display = "flex";
+
+            if (video) {
+                video.play().catch(() => {});
+            }
+        }
+    }
+}
+
+window.closeQueenModal = function() {
+    const modal = document.getElementById("queenModal");
+    const video = document.getElementById("queenVideo");
+
+    modal.style.display = "none";
+
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+};
+
+// Проверка при запуске
+checkQueenReward();
     let currentRank = "";
 
     const rankElement = document.getElementById("rank");
