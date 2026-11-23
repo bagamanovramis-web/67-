@@ -19,11 +19,11 @@ function checkQueenReward() {
     ) {
         localStorage.setItem("queenRewardUsed", "yes");
 
-        const modal = document.getElementById("queenModal");
-        const video = document.getElementById("queenVideo");
+      const modal = document.getElementById("queenModal");
+const video = document.getElementById("queenVideo");
 
-        if (modal) {
-            modal.style.display = "flex";
+if (modal) {
+    localStorage.setItem("queenRewardUsed", "yes");
 
             if (video) {
                 video.play().catch(() => {});
