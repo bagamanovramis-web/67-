@@ -501,6 +501,9 @@ body.feathers {
     border: 1px solid rgba(147, 197, 253, 0.5);
     border-radius: 12px;
     z-index: 100;
+    width: max-content;
+    max-width: calc(100vw - 30px);
+    box-sizing: border-box
 }
     .promo-box input {
     width: 100px;
@@ -508,6 +511,7 @@ body.feathers {
     border: none;
     border-radius: 5px;
     outline: none;
+        box-sizing: border-box;
 }
 .promo-box button {
     width: auto;
@@ -587,5 +591,11 @@ body.feathers {
 
     .about-layout .about {
         width: 100%;
+    }
+}
+@media (max-width: 700px) {
+    html, body {
+        overflow: hidden;
+        height: 100%;
     }
 }
