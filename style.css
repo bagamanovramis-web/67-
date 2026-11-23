@@ -247,3 +247,13 @@ body.purple {
     font-size: 16px;
     cursor: pointer;
 }
+#miniPipa {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 45px;
+    line-height: 1;
+    display: block;
+    z-index: 2;
+}
