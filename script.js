@@ -47,3 +47,102 @@ function changeBackground() {
     }
     document.body.className = backgrounds[currentBackground];
 }
+
+const miniArea = document.getElementById("miniGameArea");
+
+if (miniArea) {
+    const miniPipa = document.getElementById("miniPipa");
+    const miniScoreText = document.getElementById("miniScore");
+    const startMiniButton = document.getElementById("startMiniGame");
+
+    let miniScore = 0;
+    let miniRunning = false;
+
+    // Движение Пипы за мышкой или пальцем
+    function movePipa(event) {
+        if (!miniRunning) return;
+
+        const rect = miniArea.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+
+        const halfPipa = miniPipa.offsetWidth / 2;
+        const safeX = Math.max(halfPipa, Math.min(rect.width - halfPipa, x));
+
+        miniPipa.style.left = safeX + "px";
+    }
+
+    miniArea.addEventListener("pointermove", movePipa);
+
+    // Создание зерна
+    function createGrain() {
+        if (!miniRunning) return;
+
+        const grain = document.createElement("div");
+        grain.textContent = "🌾";
+        grain.style.position = "absolute";
+        grain.style.top = "0px";
+        grain.style.left = Math.random() * 90 + "%";
+        grain.style.fontSize = "25px";
+
+        miniArea.appendChild(grain);
+
+        let y = 0;
+
+        const fall = setInterval(() => {
+            if (!miniRunning) {
+                clearInterval(fall);
+                grain.remove();
+                return;
+            }
+
+            y += 3;
+            grain.style.top = y + "px";
+
+            const grainRect = grain.getBoundingClientRect();
+            const pipaRect = miniPipa.getBoundingClientRect();
+
+            if (
+                grainRect.bottom >= pipaRect.top &&
+                grainRect.top <= pipaRect.bottom &&
+                grainRect.right >= pipaRect.left &&
+                grainRect.left <= pipaRect.right
+            ) {
+                miniScore++;
+                miniScoreText.textContent = miniScore;
+                grain.remove();
+                clearInterval(fall);
+            }
+
+            if (y > miniArea.clientHeight) {
+                grain.remove();
+                clearInterval(fall);
+            }
+        }, 20);
+    }
+
+    // Начало игры
+    startMiniButton.addEventListener("click", () => {
+        if (miniRunning) return;
+
+        miniScore = 0;
+        miniScoreText.textContent = miniScore;
+        miniRunning = true;
+        startMiniButton.textContent = "Игра идёт!";
+
+        const spawnTimer = setInterval(() => {
+            if (!miniRunning) {
+                clearInterval(spawnTimer);
+                return;
+            }
+
+            createGrain();
+        }, 1000);
+
+        // Остановка через 30 секунд
+        setTimeout(() => {
+            miniRunning = false;
+            startMiniButton.textContent = "Играть ещё раз";
+            alert("Игра окончена! Пипа поймала зёрен: " + miniScore);
+        }, 30000);
+    });
+}
