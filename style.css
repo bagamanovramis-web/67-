@@ -1,8 +1,4 @@
 
-/* =========================
-   ОСНОВА
-========================= */
-
 * {
     box-sizing: border-box;
 }
@@ -15,10 +11,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
-/* =========================
-   ОСНОВНОЙ КЛИКЕР
-========================= */
 
 .game-container {
     position: relative;
@@ -34,19 +26,9 @@ body {
     text-align: center;
 }
 
-h1 {
-    font-size: 36px;
-}
-
-p {
-    font-size: 22px;
-}
-
-h2 {
-    font-size: 32px;
-}
-
-/* Кнопка Пипы */
+h1 { font-size: 36px; }
+p { font-size: 22px; }
+h2 { font-size: 32px; }
 
 .game > button {
     background: transparent;
@@ -74,19 +56,24 @@ h2 {
 
 /* Боковые кнопки */
 
-.controls {
+.side-buttons {
     position: absolute;
     left: 20px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.controls {
+    display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.controls button {
-    width: auto;
-    height: auto;
+.controls button,
+.feed-button {
     background: #2563eb;
     color: white;
     border: 2px solid #93c5fd;
@@ -96,9 +83,18 @@ h2 {
     cursor: pointer;
 }
 
-/* =========================
-   О ФИПЕ
-========================= */
+.feed-button {
+    max-width: 150px;
+    min-height: 65px;
+}
+
+.controls button:hover,
+.feed-button:hover,
+#startMiniGame:hover {
+    background: #1d4ed8;
+}
+
+/* О ПИПЕ */
 
 .about {
     width: min(600px, 90%);
@@ -119,9 +115,7 @@ h2 {
     line-height: 1.5;
 }
 
-/* =========================
-   ФОНЫ
-========================= */
+/* ФОНЫ */
 
 body.blue {
     background: linear-gradient(135deg, #172554, #2563eb, #0f172a);
@@ -132,18 +126,10 @@ body.white {
 }
 
 body.purple {
-    background: linear-gradient(
-        135deg,
-        #2e1065,
-        #9333ea,
-        #e879f9,
-        #4c1d95
-    );
+    background: linear-gradient(135deg, #2e1065, #9333ea, #e879f9, #4c1d95);
 }
 
-/* =========================
-   АНИМАЦИЯ +1
-========================= */
+/* АНИМАЦИЯ +1 */
 
 .plus-one {
     position: absolute;
@@ -161,16 +147,13 @@ body.purple {
         opacity: 1;
         transform: translate(-50%, 0);
     }
-
     to {
         opacity: 0;
         transform: translate(-50%, -70px);
     }
 }
 
-/* =========================
-   ВЕРСИЯ
-========================= */
+/* ВЕРСИЯ */
 
 .version {
     position: fixed;
@@ -180,9 +163,7 @@ body.purple {
     color: #eaf3ff;
 }
 
-/* =========================
-   МИНИ-ИГРА
-========================= */
+/* МИНИ-ИГРА */
 
 .mini-game {
     width: min(600px, 90%);
@@ -201,8 +182,6 @@ body.purple {
     touch-action: none;
 }
 
-/* Пипа в мини-игре */
-
 #miniPipa {
     width: 70px;
     height: 70px;
@@ -217,8 +196,6 @@ body.purple {
     pointer-events: none;
 }
 
-/* Кнопка начала игры */
-
 #startMiniGame {
     background: #2563eb;
     color: white;
@@ -228,8 +205,6 @@ body.purple {
     font-size: 16px;
     cursor: pointer;
 }
-
-/* Ссылка назад */
 
 .mini-game a {
     color: white;
@@ -241,12 +216,9 @@ body.purple {
     color: #93c5fd;
 }
 
-/* =========================
-   МОБИЛЬНАЯ ВЕРСИЯ
-========================= */
+/* МОБИЛЬНАЯ ВЕРСИЯ */
 
 @media (max-width: 600px) {
-
     .game-container {
         justify-content: center;
         padding-left: 75px;
@@ -259,25 +231,21 @@ body.purple {
         padding: 0 5px;
     }
 
-    h1 {
-        font-size: 30px;
-    }
-
-    p {
-        font-size: 18px;
-    }
-
-    h2 {
-        font-size: 32px;
-    }
+    h1 { font-size: 30px; }
+    p { font-size: 18px; }
+    h2 { font-size: 32px; }
 
     .game > button {
         width: 180px;
         height: 180px;
     }
 
-    .controls {
+    .side-buttons {
         left: 8px;
+        gap: 5px;
+    }
+
+    .controls {
         width: 58px;
         gap: 12px;
     }
@@ -293,6 +261,14 @@ body.purple {
         border-radius: 10px;
     }
 
+    .feed-button {
+        width: 65px;
+        min-height: 80px;
+        padding: 5px 3px;
+        font-size: 10px;
+        overflow-wrap: anywhere;
+    }
+
     .mini-game {
         width: 94%;
         margin: 20px auto;
@@ -306,27 +282,4 @@ body.purple {
         width: 70px;
         height: 70px;
     }
-}
-.mini-game-link button {
-    background: #2563eb;
-    color: white;
-    border: 2px solid #93c5fd;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.mini-game-link button:hover,
-#startMiniGame:hover {
-    background: #1d4ed8;
-}
-.mini-game-link {
-    text-align: center;
-    padding: 25px 10px 50px;
-}
-
-.mini-game-link h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
 }
