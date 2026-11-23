@@ -57,92 +57,130 @@ if (miniArea) {
 
     let miniScore = 0;
     let miniRunning = false;
+    let spawnTimer;
+    let gameTimer;
 
-    // Движение Пипы за мышкой или пальцем
+    // Движение Пипы
     function movePipa(event) {
         if (!miniRunning) return;
 
         const rect = miniArea.getBoundingClientRect();
         const x = event.clientX - rect.left;
+        const half = miniPipa.offsetWidth / 2;
 
-        const halfPipa = miniPipa.offsetWidth / 2;
-        const safeX = Math.max(halfPipa, Math.min(rect.width - halfPipa, x));
+        const safeX = Math.max(
+            half,
+            Math.min(rect.width - half, x)
+        );
 
         miniPipa.style.left = safeX + "px";
     }
 
     miniArea.addEventListener("pointermove", movePipa);
 
-    // Создание зерна
-    function createGrain() {
+    // Создание предметов
+    function createItem() {
         if (!miniRunning) return;
 
-        const grain = document.createElement("div");
-        grain.textContent = "🌾";
-        grain.style.position = "absolute";
-        grain.style.top = "0px";
-        grain.style.left = Math.random() * 90 + "%";
-        grain.style.fontSize = "25px";
+        const item = document.createElement("div");
 
-        miniArea.appendChild(grain);
+        const random = Math.random();
+
+        let type;
+        let points = 0;
+
+        if (random < 0.65) {
+            type = "🌾";
+            points = 1;
+        } else if (random < 0.85) {
+            type = "✨";
+            points = 3;
+        } else {
+            type = "💩";
+        }
+
+        item.textContent = type;
+        item.style.position = "absolute";
+        item.style.top = "0px";
+        item.style.left = Math.random() * 90 + "%";
+        item.style.fontSize = "27px";
+
+        miniArea.appendChild(item);
 
         let y = 0;
 
-        const fall = setInterval(() => {
+        const fallTimer = setInterval(() => {
             if (!miniRunning) {
-                clearInterval(fall);
-                grain.remove();
+                clearInterval(fallTimer);
+                item.remove();
                 return;
             }
 
             y += 3;
-            grain.style.top = y + "px";
+            item.style.top = y + "px";
 
-            const grainRect = grain.getBoundingClientRect();
+            const itemRect = item.getBoundingClientRect();
             const pipaRect = miniPipa.getBoundingClientRect();
 
-            if (
-                grainRect.bottom >= pipaRect.top &&
-                grainRect.top <= pipaRect.bottom &&
-                grainRect.right >= pipaRect.left &&
-                grainRect.left <= pipaRect.right
-            ) {
-                miniScore++;
-                miniScoreText.textContent = miniScore;
-                grain.remove();
-                clearInterval(fall);
+            const caught =
+                itemRect.bottom >= pipaRect.top &&
+                itemRect.top <= pipaRect.bottom &&
+                itemRect.right >= pipaRect.left &&
+                itemRect.left <= pipaRect.right;
+
+            if (caught) {
+                clearInterval(fallTimer);
+                item.remove();
+
+                if (type === "💩") {
+                    endGame();
+                } else {
+                    miniScore += points;
+                    miniScoreText.textContent = miniScore;
+                }
             }
 
             if (y > miniArea.clientHeight) {
-                grain.remove();
-                clearInterval(fall);
+                clearInterval(fallTimer);
+                item.remove();
             }
         }, 20);
     }
 
-    // Начало игры
+    // Конец игры
+    function endGame() {
+        miniRunning = false;
+
+        clearInterval(spawnTimer);
+        clearTimeout(gameTimer);
+
+        startMiniButton.textContent = "Играть ещё раз";
+
+        alert("Пипа поймала какашку! Очки: " + miniScore);
+    }
+
+    // Запуск игры
     startMiniButton.addEventListener("click", () => {
         if (miniRunning) return;
 
         miniScore = 0;
-        miniScoreText.textContent = miniScore;
+        miniScoreText.textContent = "0";
+
         miniRunning = true;
         startMiniButton.textContent = "Игра идёт!";
 
-        const spawnTimer = setInterval(() => {
-            if (!miniRunning) {
+        spawnTimer = setInterval(createItem, 1000);
+
+        gameTimer = setTimeout(() => {
+            if (miniRunning) {
+                miniRunning = false;
                 clearInterval(spawnTimer);
-                return;
+
+                startMiniButton.textContent = "Играть ещё раз";
+
+                alert("Время вышло! Пипа набрала " + miniScore + " очков!");
             }
-
-            createGrain();
-        }, 1000);
-
-        // Остановка через 30 секунд
-        setTimeout(() => {
-            miniRunning = false;
-            startMiniButton.textContent = "Играть ещё раз";
-            alert("Игра окончена! Пипа поймала зёрен: " + miniScore);
         }, 30000);
     });
 }
+
