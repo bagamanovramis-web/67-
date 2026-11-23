@@ -25,11 +25,18 @@ const ranks = [
 function updateRank() {
     const rank = ranks.find(rank => totalClicks >= rank.clicks);
 
-    rankElement.textContent = rank
+    const newRank = rank
         ? rank.title
         : "🐣 Новичок";
-}
 
+    if (rankElement.textContent !== newRank) {
+        rankElement.textContent = newRank;
+
+        if (totalClicks > 0) {
+            alert("🎉 Новое звание!\n" + newRank);
+        }
+    }
+}
 updateRank();
     scoreElement.innerText = clicks;
     recordElement.innerText = record;
