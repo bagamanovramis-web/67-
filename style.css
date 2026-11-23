@@ -437,3 +437,61 @@ body.feathers {
         background-attachment: scroll;
     }
 }
+/* ПОЗДРАВЛЕНИЕ КОРОЛЕВЫ */
+
+.queen-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 20, 0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.queen-content {
+    width: min(550px, 100%);
+    padding: 22px;
+    background: linear-gradient(135deg, #172554, #6d28d9);
+    border: 2px solid #c4b5fd;
+    border-radius: 22px;
+    box-shadow: 0 0 35px rgba(147, 51, 234, 0.5);
+    animation: queenAppear 0.5s ease;
+}
+
+.queen-content h2 {
+    color: #fde68a;
+    font-size: 23px;
+}
+
+.queen-content video {
+    width: 100%;
+    border-radius: 14px;
+}
+
+.queen-content p {
+    color: white;
+    font-size: 18px;
+}
+
+.queen-content button {
+    padding: 12px 25px;
+    border: 2px solid #c4b5fd;
+    border-radius: 12px;
+    background: #7c3aed;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@keyframes queenAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
