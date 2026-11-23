@@ -114,7 +114,7 @@ if (scoreElement && recordElement) {
     };
 
     // Смена фона
-    const backgrounds = ["blue", "white", "purple"];
+   const backgrounds = ["blue", "white", "purple", "feathers"];
     let currentBackground = 0;
 
     window.changeBackground = function() {
