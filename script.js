@@ -117,6 +117,7 @@ if (miniArea) {
     const startMiniButton = document.getElementById("startMiniGame");
 
     let miniScore = 0;
+   const eatingSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
     let miniRunning = false;
     let spawnTimer;
     let gameTimer;
@@ -194,10 +195,13 @@ if (random < 0.55) {
 
                 if (type === "💩") {
                     endGame();
-                } else {
-                    miniScore += points;
-                    miniScoreText.textContent = miniScore;
-                }
+               } else {
+    let sound = eatingSound.cloneNode();
+    sound.play();
+
+    miniScore += points;
+    miniScoreText.textContent = miniScore;
+}
             }
 
             if (y > miniArea.clientHeight) {
