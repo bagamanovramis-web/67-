@@ -13,11 +13,11 @@ if (scoreElement && recordElement) {
 const rankElement = document.getElementById("rank");
 
 const ranks = [
-    { clicks: 100000, title: "💎 Правая рука Пипы" },
+    { clicks: 100000, title: "💎 Правая лапа Пипы" },
     { clicks: 10000, title: "🧹 Прислуга Пипы" },
     { clicks: 5000, title: "⭐ Легенда Пипы" },
     { clicks: 1000, title: "👑 Поклонник Королевы" },
-    { clicks: 500, title: "🦜 Друг Пипы" },
+    { clicks: 500, title: "🍎 Поставщик вкусняшек" },
     { clicks: 100, title: "🌾 Любитель чумизы" },
     { clicks: 1, title: "🐥 Знакомый Пипы" }
 ];
