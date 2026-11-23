@@ -113,17 +113,15 @@ if (miniArea) {
 
         let type;
         let points = 0;
-
-        if (random < 0.65) {
-            type = "🌾";
-            points = 1;
-        } else if (random < 0.85) {
-            type = "✨";
-            points = 3;
-        } else {
-            type = "💩";
-        }
-
+if (random < 0.55) {
+    type = "🌾";
+    points = 1;
+} else if (random < 0.65) {
+    type = "✨";
+    points = 3;
+} else {
+    type = "💩";
+}
         item.textContent = type;
         item.style.position = "absolute";
         item.style.top = "0px";
