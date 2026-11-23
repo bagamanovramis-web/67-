@@ -49,7 +49,6 @@ if (scoreElement && recordElement) {
     };
 
     // Проверка при запуске
-    checkQueenReward();
 
     let currentRank = "";
 
