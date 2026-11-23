@@ -43,7 +43,7 @@ body {
     line-height: 1.5;
 }
 
-/* РАСПОЛОЖЕНИЕ: КНОПКИ — ПИПА — ИГРА */
+/* ОСНОВНАЯ РАСКЛАДКА */
 
 .main-layout {
     display: grid;
@@ -54,7 +54,7 @@ body {
     gap: 25px;
 }
 
-/* КНОПКИ СЛЕВА */
+/* КНОПКИ */
 
 .controls {
     display: flex;
@@ -80,7 +80,7 @@ body {
     background: #1d4ed8;
 }
 
-/* ИГРА ПО ЦЕНТРУ */
+/* ИГРА */
 
 .game {
     text-align: center;
@@ -123,7 +123,7 @@ body {
     transform: scale(0.8);
 }
 
-/* СЧЁТ И РЕКОРД */
+/* СЧЁТ */
 
 #score {
     font-size: 32px;
@@ -138,7 +138,7 @@ body {
     margin: 10px 0;
 }
 
-/* ЗВАНИЕ ПИПЫ */
+/* ЗВАНИЕ */
 
 #rank {
     display: inline-block;
@@ -153,7 +153,7 @@ body {
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
 }
 
-/* ИГРА СПРАВА */
+/* МИНИ-ИГРА СПРАВА */
 
 .right-game {
     display: flex;
@@ -259,7 +259,7 @@ body.purple {
     cursor: pointer;
 }
 
-/* ССЫЛКА НАЗАД */
+/* ССЫЛКА НАЗАД В МИНИ-ИГРЕ */
 
 .mini-game a {
     color: white;
@@ -271,92 +271,7 @@ body.purple {
     color: #93c5fd;
 }
 
-/* МОБИЛЬНАЯ ВЕРСИЯ */
-
-@media (max-width: 700px) {
-
-    .game-container {
-        padding: 12px 8px;
-    }
-
-    .main-layout {
-        grid-template-columns: 85px minmax(0, 1fr) 90px;
-        gap: 8px;
-    }
-
-    .controls {
-        gap: 12px;
-    }
-
-    .controls button {
-        width: 85px;
-        min-height: 90px;
-        padding: 7px;
-        font-size: 12px;
-        line-height: 1.3;
-        overflow-wrap: anywhere;
-    }
-
-    .game {
-        width: 100%;
-    }
-
-    .game h1 {
-        font-size: 22px;
-    }
-
-    .game p {
-        font-size: 15px;
-    }
-
-    .pipa-button {
-        width: 150px;
-        height: 150px;
-    }
-
-    #score {
-        font-size: 25px;
-    }
-
-    .game h2 {
-        font-size: 25px;
-    }
-
-    .feed-button {
-        width: 90px;
-        min-height: 90px;
-        padding: 7px;
-        font-size: 12px;
-        line-height: 1.3;
-        overflow-wrap: anywhere;
-    }
-
-    .about {
-        width: 96%;
-        margin-bottom: 20px;
-        padding: 12px;
-    }
-
-    .about p {
-        font-size: 14px;
-    }
-
-    .mini-game {
-        width: 94%;
-        margin: 20px auto;
-    }
-
-    .mini-game-area {
-        height: 350px;
-    }
-
-    #miniPipa {
-        width: 70px;
-        height: 70px;
-    }
-}
-
-/* УВЕДОМЛЕНИЕ О НОВОМ ЗВАНИИ */
+/* УВЕДОМЛЕНИЕ О ЗВАНИИ */
 
 .rank-notification {
     position: fixed;
@@ -495,39 +410,6 @@ body.feathers {
     cursor: pointer;
 }
 
-/* ПРОМОКОДЫ — ТЕЛЕФОНЫ */
-
-@media (max-width: 700px) {
-    .promo-box {
-        position: fixed;
-        bottom: 8px;
-        left: 8px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        padding: 6px;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(147, 197, 253, 0.5);
-        border-radius: 10px;
-        z-index: 100;
-        width: max-content;
-        max-width: calc(100vw - 16px);
-    }
-
-    .promo-box input {
-        width: 90px;
-        min-width: 0;
-        padding: 7px;
-        box-sizing: border-box;
-    }
-
-    .promo-box button {
-        width: auto;
-        padding: 8px;
-        font-size: 13px;
-    }
-}
-
 /* КНОПКА СТАТИСТИКИ */
 
 .stats-button {
@@ -536,19 +418,15 @@ body.feathers {
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     width: 155px;
     height: 155px;
-
     background: linear-gradient(135deg, #2563eb, #7c3aed);
     border: 2px solid #93c5fd;
     border-radius: 20px;
-
     color: white;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
-
     box-shadow: 0 5px 20px rgba(37, 99, 235, 0.4);
     transition: 0.2s;
 }
@@ -578,11 +456,9 @@ body.feathers {
     margin: 50px auto;
     padding: 30px;
     text-align: center;
-
     background: rgba(15, 23, 42, 0.75);
     border: 2px solid rgba(147, 197, 253, 0.5);
     border-radius: 25px;
-
     box-shadow: 0 0 35px rgba(37, 99, 235, 0.3);
 }
 
@@ -650,13 +526,177 @@ body.feathers {
     box-shadow: 0 0 20px rgba(147, 197, 253, 0.5);
 }
 
-/* МОБИЛЬНАЯ СТРАНИЦА СТАТИСТИКИ */
+/* МОБИЛЬНАЯ ВЕРСИЯ */
 
 @media (max-width: 700px) {
+
+    .game-container {
+        padding: 12px 8px;
+    }
+
+    /* КНОПКИ И МИНИ-ИГРА В ПЕРВОМ РЯДУ */
+
+    .main-layout {
+        grid-template-columns: minmax(0, 1fr) 90px;
+        gap: 8px;
+        align-items: start;
+    }
+
+    .controls {
+        grid-column: 1;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 85px 85px;
+        gap: 12px;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .controls button {
+        width: 85px;
+        height: 90px;
+        min-height: 90px;
+        padding: 7px;
+        font-size: 12px;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+
+    .controls #resetButton {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .controls .stats-button {
+        grid-column: 2;
+        grid-row: 1;
+        width: 85px;
+        height: 90px;
+        min-height: 90px;
+        padding: 7px;
+        font-size: 12px;
+        gap: 5px;
+        border-radius: 12px;
+    }
+
+    .controls #soundButton {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .controls #backgroundButton {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .right-game {
+        grid-column: 2;
+        grid-row: 1;
+        width: 90px;
+    }
+
+    .feed-button {
+        width: 90px;
+        min-height: 90px;
+        padding: 7px;
+        font-size: 12px;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+
+    /* ИГРА НИЖЕ КНОПОК */
+
+    .game {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .game h1 {
+        font-size: 22px;
+    }
+
+    .game p {
+        font-size: 15px;
+    }
+
+    .pipa-button {
+        width: 150px;
+        height: 150px;
+    }
+
+    #score,
+    .game h2 {
+        font-size: 25px;
+    }
+
+    /* О ПИПЕ */
+
+    .about {
+        width: 96%;
+        margin-bottom: 20px;
+        padding: 12px;
+    }
+
+    .about p {
+        font-size: 14px;
+    }
+
+    /* МИНИ-ИГРА */
+
+    .mini-game {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .mini-game-area {
+        height: 350px;
+    }
+
+    #miniPipa {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* ПРОМОКОДЫ */
+
+    .promo-box {
+        position: fixed;
+        bottom: 8px;
+        left: 8px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(147, 197, 253, 0.5);
+        border-radius: 10px;
+        z-index: 100;
+        width: max-content;
+        max-width: calc(100vw - 16px);
+    }
+
+    .promo-box input {
+        width: 90px;
+        min-width: 0;
+        padding: 7px;
+    }
+
+    .promo-box button {
+        width: auto;
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    /* СТРАНИЦА СТАТИСТИКИ */
+
     .stats-container {
         width: 92%;
+        max-width: 100%;
         margin: 20px auto;
         padding: 18px;
+        overflow: visible;
     }
 
     .stats-container h1 {
@@ -680,97 +720,30 @@ body.feathers {
     .stats-card p {
         font-size: 26px;
     }
-}
 
-/* РАСКЛАДКА КНОПОК НА ТЕЛЕФОНАХ */
+    /* КНОПКА НАЗАД В ИГРУ */
 
-@media (max-width: 700px) {
-
-    .controls {
-        display: grid;
-        grid-template-columns: 85px 85px;
-        gap: 12px;
-        align-items: start;
-    }
-
-    .controls #resetButton {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .controls .stats-button {
-        grid-column: 2;
-        grid-row: 1;
-        width: 85px;
-        height: 90px;
-        padding: 7px;
-        font-size: 12px;
-        gap: 5px;
-        border-radius: 12px;
-    }
-
-    .controls #soundButton {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .controls #backgroundButton {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    html, body {
-        overflow-x: hidden;
-        overflow-y: auto;
-        height: auto;
-    }
-}
-@media (max-width: 700px) {
-    .back-button {
-        max-width: calc(100% - 20px);
-        box-sizing: border-box;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-@media (max-width: 700px) {
-    .back-button {
-        display: inline-block;
-        max-width: calc(100% - 24px);
-        box-sizing: border-box;
-        white-space: nowrap;
-        padding: 12px 16px;
-    }
-}
-@media (max-width: 700px) {
-    .back-button {
-        width: 85px;
-        height: 90px;
-        padding: 7px;
-        font-size: 12px;
-        border-radius: 12px;
-        box-sizing: border-box;
+    .stats-container > a {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        margin: 0 auto;
-    }
-}
-@media (max-width: 700px) {
-    .stats-container {
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        padding: 15px;
-        overflow: visible;
-    }
-
-    .back-button {
         width: 85px;
         min-width: 85px;
         max-width: 85px;
-        flex-shrink: 0;
+        height: 90px;
+        padding: 7px;
         margin: 15px auto 0;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        font-size: 12px;
+    }
+
+    html,
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
     }
 }
