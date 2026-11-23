@@ -355,287 +355,96 @@ body.feathers {
     background-attachment: fixed;
 }
 
-@media (max-width: 700px) {
-    body.feathers {
-        background-image: url("./Парящие перья в небесной дымке.webp");
-        background-attachment: scroll;
-    }
-}
-
-/* ПОЗДРАВЛЕНИЕ КОРОЛЕВЫ */
-
-.queen-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background: rgba(0, 0, 20, 0.85);
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-}
-
-.queen-content {
-    width: min(550px, 100%);
-    padding: 22px;
-    background: linear-gradient(135deg, #172554, #6d28d9);
-    border: 2px solid #c4b5fd;
-    border-radius: 22px;
-    box-shadow: 0 0 35px rgba(147, 51, 234, 0.5);
-    animation: queenAppear 0.5s ease;
-}
-
-.queen-content h2 {
-    color: #fde68a;
-    font-size: 23px;
-}
-
-.queen-content video {
-    width: 100%;
-    border-radius: 14px;
-}
-
-.queen-content p {
-    color: white;
-    font-size: 18px;
-}
-
-.queen-content button {
-    padding: 12px 25px;
-    border: 2px solid #c4b5fd;
-    border-radius: 12px;
-    background: #7c3aed;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-/* КНОПКА СТАТИСТИКИ */
-
-.stats-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 155px;
-    height: 155px;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    border: 2px solid #93c5fd;
-    border-radius: 20px;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    box-shadow: 0 5px 20px rgba(37, 99, 235, 0.4);
-    transition: 0.2s;
-}
-
-.stats-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6);
-}
-
-/* РАСПОЛОЖЕНИЕ СТАТИСТИКИ */
-
-.about-layout {
-    display: flex;
-    align-items: stretch;
-    gap: 15px;
-    width: 100%;
-}
-
-.about-layout .stats-button {
-    flex-shrink: 0;
-}
-
-/* СТРАНИЦА СТАТИСТИКИ */
-
-.stats-container {
-    width: min(900px, 92%);
-    margin: 50px auto;
-    padding: 30px;
-    text-align: center;
-    background: rgba(15, 23, 42, 0.75);
-    border: 2px solid rgba(147, 197, 253, 0.5);
-    border-radius: 25px;
-    box-shadow: 0 0 35px rgba(37, 99, 235, 0.3);
-}
-
-.stats-container h1 {
-    color: #ffffff;
-    font-size: 36px;
-    margin-bottom: 35px;
-    text-shadow: 0 0 15px rgba(147, 197, 253, 0.7);
-}
-
-/* КАРТОЧКИ СТАТИСТИКИ */
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.stats-card {
-    padding: 25px 15px;
-    background: linear-gradient(135deg, #2563eb, #6d28d9);
-    border: 2px solid #93c5fd;
-    border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(37, 99, 235, 0.25);
-    transition: 0.25s;
-}
-
-.stats-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
-}
-
-.stats-card h3 {
-    color: #dbeafe;
-    font-size: 19px;
-    margin-bottom: 15px;
-}
-
-.stats-card p {
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0;
-    overflow-wrap: anywhere;
-}
-
-/* КНОПКА НАЗАД */
-
-.stats-container > a {
-    display: inline-block;
-    padding: 13px 25px;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    border: 2px solid #93c5fd;
-    border-radius: 12px;
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.stats-container > a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(147, 197, 253, 0.5);
-}
-
 /* МОБИЛЬНАЯ ВЕРСИЯ */
-
 @media (max-width: 700px) {
 
     .game-container {
-        padding: 12px 8px;
+        padding: 10px 5px;
     }
 
-    /* КНОПКИ И МИНИ-ИГРА В ПЕРВОМ РЯДУ */
-
+    /* ТРИ КОЛОНКИ: КНОПКИ — ПИПА — КОРМЛЕНИЕ */
     .main-layout {
-        grid-template-columns: minmax(0, 1fr) 90px;
+        display: grid;
+        grid-template-columns: 85px minmax(0, 1fr) 90px;
         gap: 8px;
-        align-items: start;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 
     .controls {
         grid-column: 1;
         grid-row: 1;
-        display: grid;
-        grid-template-columns: 85px 85px;
-        gap: 12px;
-        align-items: start;
-        justify-content: start;
-    }
-
-    .controls button {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
         width: 85px;
-        height: 90px;
-        min-height: 90px;
-        padding: 7px;
-        font-size: 12px;
-        line-height: 1.3;
-        overflow-wrap: anywhere;
     }
 
-    .controls #resetButton {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
+    .controls button,
     .controls .stats-button {
-        grid-column: 2;
-        grid-row: 1;
         width: 85px;
-        height: 90px;
-        min-height: 90px;
-        padding: 7px;
-        font-size: 12px;
-        gap: 5px;
+        height: 65px;
+        min-height: 65px;
+        padding: 5px;
+        font-size: 11px;
+        line-height: 1.2;
         border-radius: 12px;
     }
 
-    .controls #soundButton {
-        grid-column: 1;
-        grid-row: 2;
+    .controls .stats-button {
+        display: flex;
+        gap: 3px;
     }
 
-    .controls #backgroundButton {
+    /* ПИПА ПО ЦЕНТРУ */
+    .game {
         grid-column: 2;
-        grid-row: 2;
+        grid-row: 1;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
     }
 
+    .game h1 {
+        font-size: 19px;
+    }
+
+    .game p {
+        font-size: 14px;
+    }
+
+    .pipa-button {
+        width: min(145px, 100%);
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    #score,
+    .game h2 {
+        font-size: 23px;
+    }
+
+    /* КОРМЛЕНИЕ СПРАВА */
     .right-game {
-        grid-column: 2;
+        grid-column: 3;
         grid-row: 1;
         width: 90px;
     }
 
     .feed-button {
         width: 90px;
-        min-height: 90px;
-        padding: 7px;
-        font-size: 12px;
-        line-height: 1.3;
+        min-height: 75px;
+        padding: 6px;
+        font-size: 11px;
+        line-height: 1.2;
         overflow-wrap: anywhere;
     }
 
-    /* ИГРА НИЖЕ КНОПОК */
-
-    .game {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        width: 100%;
-        margin-top: 15px;
-    }
-
-    .game h1 {
-        font-size: 22px;
-    }
-
-    .game p {
-        font-size: 15px;
-    }
-
-    .pipa-button {
-        width: 150px;
-        height: 150px;
-    }
-
-    #score,
-    .game h2 {
-        font-size: 25px;
-    }
-
     /* О ПИПЕ */
-
     .about {
         width: 96%;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         padding: 12px;
     }
 
@@ -643,38 +452,15 @@ body.feathers {
         font-size: 14px;
     }
 
-    /* МИНИ-ИГРА */
-
-    .mini-game {
-        width: 94%;
-        margin: 20px auto;
-    }
-
-    .mini-game-area {
-        height: 350px;
-    }
-
-    #miniPipa {
-        width: 70px;
-        height: 70px;
-    }
-
-    /* ПРОМОКОДЫ */
-
+    /* ПРОМОКОДЫ — БОЛЬШЕ НЕ ПЕРЕКРЫВАЮТ РЕКОРД */
     .promo-box {
-        position: fixed;
-        bottom: 8px;
-        left: 8px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        padding: 6px;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(147, 197, 253, 0.5);
-        border-radius: 10px;
-        z-index: 100;
+        position: static;
         width: max-content;
         max-width: calc(100vw - 16px);
+        margin: 15px auto 35px;
+        padding: 6px;
+        gap: 5px;
+        justify-content: center;
     }
 
     .promo-box input {
@@ -689,14 +475,27 @@ body.feathers {
         font-size: 13px;
     }
 
-    /* СТРАНИЦА СТАТИСТИКИ */
+    /* МИНИ-ИГРА */
+    .mini-game {
+        width: 94%;
+        margin: 20px auto;
+    }
 
+    .mini-game-area {
+        height: 350px;
+    }
+
+    #miniPipa {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* СТРАНИЦА СТАТИСТИКИ */
     .stats-container {
         width: 92%;
         max-width: 100%;
         margin: 20px auto;
         padding: 18px;
-        overflow: visible;
     }
 
     .stats-container h1 {
@@ -721,29 +520,24 @@ body.feathers {
         font-size: 26px;
     }
 
-    /* КНОПКА НАЗАД В ИГРУ */
-
     .stats-container > a {
         display: flex;
         width: 85px;
-        min-width: 85px;
-        max-width: 85px;
         height: 90px;
         padding: 7px;
         margin: 15px auto 0;
-        box-sizing: border-box;
         align-items: center;
         justify-content: center;
         text-align: center;
-        white-space: normal;
-        overflow-wrap: anywhere;
         font-size: 12px;
     }
 
     html,
     body {
         overflow-x: hidden;
-        overflow-y: auto;
-        height: auto;
+    }
+
+    body.feathers {
+        background-attachment: scroll;
     }
 }
