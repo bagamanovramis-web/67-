@@ -9,6 +9,7 @@ if (scoreElement && recordElement) {
     let clicks = Number(localStorage.getItem("clicks")) || 0;
     let record = Number(localStorage.getItem("record")) || 0;
    let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
+   let currentRank = "";
 
 const rankElement = document.getElementById("rank");
 
@@ -29,13 +30,12 @@ function updateRank() {
         ? rank.title
         : "🐣 Новичок";
 
-    if (rankElement.textContent !== newRank) {
-        rankElement.textContent = newRank;
-
-        if (totalClicks > 0) {
-            alert("🎉 Новое звание!\n" + newRank);
-        }
+    if (currentRank !== "" && currentRank !== newRank) {
+        alert("🎉 Новое звание!\n" + newRank);
     }
+
+    currentRank = newRank;
+    rankElement.textContent = newRank;
 }
 updateRank();
     scoreElement.innerText = clicks;
