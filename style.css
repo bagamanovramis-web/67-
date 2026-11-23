@@ -15,58 +15,43 @@ body {
 /* ОСНОВНОЙ КЛИКЕР */
 
 .game-container {
-    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    padding-top: 20px;
+    padding: 20px;
 }
 
-.game {
-    text-align: center;
+.about {
+    width: min(600px, 90%);
+    margin: 0 auto 35px;
+    padding: 15px 20px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 15px;
 }
 
-h1 { font-size: 36px; }
-p { font-size: 22px; }
-h2 { font-size: 32px; }
-
-.game > button {
-    background: transparent;
-    border: none;
-    width: 200px;
-    height: 200px;
-    position: relative;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    outline: none;
+.about h2 {
+    margin-top: 0;
+    font-size: 24px;
 }
 
-.game > button img {
+.about p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* ТРИ КОЛОНКИ */
+
+.main-layout {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    pointer-events: none;
-    -webkit-user-drag: none;
-}
-
-.game > button:active img {
-    transform: scale(0.8);
-}
-
-/* БЛОК БОКОВЫХ КНОПОК И ПИПЫ */
-
-.side-buttons {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
+    display: grid;
+    grid-template-columns: 150px minmax(180px, 240px) minmax(250px, 1fr);
     align-items: center;
-    gap: 20px;
+    gap: 25px;
 }
+
+/* КНОПКИ СЛЕВА */
 
 .controls {
     display: flex;
@@ -80,14 +65,9 @@ h2 { font-size: 32px; }
     color: white;
     border: 2px solid #93c5fd;
     border-radius: 12px;
-    padding: 12px 20px;
+    padding: 12px 15px;
     font-size: 16px;
     cursor: pointer;
-}
-
-.feed-button {
-    max-width: 150px;
-    min-height: 65px;
 }
 
 .controls button:hover,
@@ -96,32 +76,53 @@ h2 { font-size: 32px; }
     background: #1d4ed8;
 }
 
-.pipa-center img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
+/* ПИПА ПО ЦЕНТРУ */
+
+.game-pipa button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.game-pipa img {
     display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
-/* О ПИПЕ */
-
-.about {
-    width: min(600px, 90%);
-    margin: 0 auto 25px;
-    padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 15px;
+.game-pipa button:active img {
+    transform: scale(.8);
 }
 
-.about h2 {
-    margin-top: 0;
-    font-size: 24px;
+/* ИГРА СПРАВА */
+
+.game {
+    text-align: center;
 }
 
-.about p {
-    font-size: 16px;
-    line-height: 1.5;
+h1 {
+    font-size: 36px;
+}
+
+p {
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+.feed-button {
+    max-width: 150px;
+    min-height: 65px;
+    margin-top: 10px;
 }
 
 /* ФОНЫ */
@@ -148,7 +149,7 @@ body.purple {
     font-size: 28px;
     font-weight: bold;
     pointer-events: none;
-    animation: fly-up 0.7s forwards;
+    animation: fly-up .7s forwards;
 }
 
 @keyframes fly-up {
@@ -185,8 +186,8 @@ body.purple {
     height: 350px;
     position: relative;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.12);
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255,255,255,.12);
+    border: 2px solid rgba(255,255,255,.25);
     border-radius: 15px;
     touch-action: none;
 }
@@ -227,97 +228,54 @@ body.purple {
 
 /* МОБИЛЬНАЯ ВЕРСИЯ */
 
-@media (max-width: 600px) {
-
+@media (max-width: 700px) {
     .game-container {
-        justify-content: center;
-        padding-left: 75px;
-        padding-right: 10px;
+        padding: 12px 8px;
     }
 
-    .game {
-        width: 100%;
-        min-width: 0;
-        padding: 0 5px;
-    }
-
-    h1 { font-size: 30px; }
-    p { font-size: 18px; }
-    h2 { font-size: 32px; }
-
-    .game > button {
-        width: 180px;
-        height: 180px;
-    }
-
-    .side-buttons {
-        left: 8px;
-        gap: 5px;
+    .main-layout {
+        grid-template-columns: 65px minmax(100px, 1fr) minmax(110px, 1fr);
+        gap: 7px;
     }
 
     .controls {
-        width: 58px;
-        gap: 12px;
+        gap: 10px;
     }
 
     .controls button {
-        width: 58px;
-        height: 16vh;
-        min-height: 80px;
-        padding: 4px 2px;
-        font-size: 9px;
-        line-height: 1.2;
-        overflow-wrap: anywhere;
-        border-radius: 10px;
-    }
-
-    .pipa-center img {
         width: 65px;
-        height: 65px;
-    }
-
-    .feed-button {
-        width: 65px;
-        min-height: 80px;
-        padding: 5px 3px;
+        min-height: 75px;
+        padding: 4px;
         font-size: 10px;
         overflow-wrap: anywhere;
     }
 
-    .mini-game {
-        width: 94%;
-        margin: 20px auto;
+    .game-pipa button {
+        width: 100%;
+        max-width: 150px;
+        height: 150px;
     }
 
-    .mini-game-area {
-        height: 350px;
+    h1 {
+        font-size: 22px;
     }
 
-    #miniPipa {
-        width: 70px;
-        height: 70px;
-    }
-}
-.game-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-}
-
-.game-content .feed-button {
-    width: 130px;
-    min-height: 70px;
-}
-
-@media (max-width: 600px) {
-    .game-content {
-        gap: 8px;
+    p {
+        font-size: 15px;
     }
 
-    .game-content .feed-button {
-        width: 75px;
+    h2 {
+        font-size: 25px;
+    }
+
+    .feed-button {
+        width: 100%;
+        min-height: 60px;
         padding: 5px;
         font-size: 11px;
+    }
+
+    .mini-game {
+        width: 94%;
     }
 }
