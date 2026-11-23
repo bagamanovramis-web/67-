@@ -731,12 +731,16 @@ body.feathers {
 @media (max-width: 700px) {
     .promo-box {
         position: fixed !important;
+        display: flex !important;
         left: 8px !important;
-        right: auto !important;
         bottom: 8px !important;
+        right: auto !important;
         top: auto !important;
+        width: max-content !important;
+        max-width: calc(100vw - 16px);
         margin: 0 !important;
         transform: none !important;
-        z-index: 9999;
+        z-index: 99999 !important;
     }
+}
 }
