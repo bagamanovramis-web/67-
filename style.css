@@ -99,8 +99,8 @@ body {
 /* ПИПА */
 
 .pipa-button {
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: 220px;
     padding: 0;
     border: none;
     background: transparent;
@@ -109,7 +109,6 @@ body {
     user-select: none;
     outline: none;
 }
-
 .pipa-button img {
     display: block;
     width: 100%;
@@ -293,14 +292,12 @@ body.purple {
         font-size: 15px;
     }
 
-    .pipa-button {
-        width: 120px;
-        height: 120px;
-    }
-
+  .pipa-button {
+    width: 150px;
+    height: 150px;
+}
     #score {
         font-size: 25px;
-    }
 
     .game h2 {
         font-size: 25px;
