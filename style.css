@@ -109,6 +109,7 @@ body {
     user-select: none;
     outline: none;
 }
+
 .pipa-button img {
     display: block;
     width: 100%;
@@ -136,6 +137,7 @@ body {
 .game p {
     margin: 10px 0;
 }
+
 /* ЗВАНИЕ ПИПЫ */
 
 #rank {
@@ -150,6 +152,7 @@ body {
     color: #fde68a;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
 }
+
 /* ИГРА СПРАВА */
 
 .right-game {
@@ -190,6 +193,7 @@ body.purple {
     animation: fly-up 0.7s forwards;
     z-index: 10;
 }
+
 @keyframes fly-up {
     from {
         opacity: 1;
@@ -351,7 +355,9 @@ body.purple {
         height: 70px;
     }
 }
+
 /* УВЕДОМЛЕНИЕ О НОВОМ ЗВАНИИ */
+
 .rank-notification {
     position: fixed;
     top: 25px;
@@ -382,7 +388,9 @@ body.purple {
     font-weight: bold;
     font-size: 18px;
 }
+
 /* ПРОМОКОДЫ */
+
 .promo-box {
     position: fixed;
     bottom: 15px;
@@ -421,6 +429,7 @@ body.purple {
     font-size: 13px;
     color: #fde68a;
 }
+
 /* ФОН С ПЕРЬЯМИ */
 
 body.feathers {
@@ -437,6 +446,7 @@ body.feathers {
         background-attachment: scroll;
     }
 }
+
 /* ПОЗДРАВЛЕНИЕ КОРОЛЕВЫ */
 
 .queen-modal {
@@ -484,42 +494,41 @@ body.feathers {
     font-size: 16px;
     cursor: pointer;
 }
+
+/* ПРОМОКОДЫ — ТЕЛЕФОНЫ */
+
 @media (max-width: 700px) {
-/* =========================
-   ПРОМОКОДЫ — ТЕЛЕФОНЫ
-========================= */
-.promo-box {
-    position: fixed;
-    bottom: 8px;
-    left: 8px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 6px;
-    background: rgba(15, 23, 42, 0.9);
-    border: 1px solid rgba(147, 197, 253, 0.5);
-    border-radius: 10px;
-    z-index: 100;
-    width: max-content;
-    max-width: calc(100vw - 16px);
+    .promo-box {
+        position: fixed;
+        bottom: 8px;
+        left: 8px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(147, 197, 253, 0.5);
+        border-radius: 10px;
+        z-index: 100;
+        width: max-content;
+        max-width: calc(100vw - 16px);
+    }
+
+    .promo-box input {
+        width: 90px;
+        min-width: 0;
+        padding: 7px;
+        box-sizing: border-box;
+    }
+
+    .promo-box button {
+        width: auto;
+        padding: 8px;
+        font-size: 13px;
+    }
 }
 
-.promo-box input {
-    width: 90px;
-    min-width: 0;
-    padding: 7px;
-    box-sizing: border-box;
-}
-
-.promo-box button {
-    width: auto;
-    padding: 8px;
-    font-size: 13px;
-}
-}
-/* =========================
-   КНОПКА СТАТИСТИКИ
-========================= */
+/* КНОПКА СТАТИСТИКИ */
 
 .stats-button {
     display: flex;
@@ -548,9 +557,8 @@ body.feathers {
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6);
 }
-/* =========================
-   РАСПОЛОЖЕНИЕ СТАТИСТИКИ
-========================= */
+
+/* РАСПОЛОЖЕНИЕ СТАТИСТИКИ */
 
 .about-layout {
     display: flex;
@@ -563,32 +571,7 @@ body.feathers {
     flex-shrink: 0;
 }
 
-/* ТЕЛЕФОНЫ */
-@media (max-width: 700px) {
-    .about-layout {
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-
-    .about-layout .stats-button {
-        width: 110px;
-        height: 80px;
-    }
-
-    .about-layout .about {
-        width: 100%;
-    }
-}
-@media (max-width: 700px) {
-    html, body {
-        overflow: hidden;
-        height: 100%;
-    }
-}
-
-/* =========================
-   СТРАНИЦА СТАТИСТИКИ
-========================= */
+/* СТРАНИЦА СТАТИСТИКИ */
 
 .stats-container {
     width: min(900px, 92%);
@@ -621,11 +604,9 @@ body.feathers {
 
 .stats-card {
     padding: 25px 15px;
-
     background: linear-gradient(135deg, #2563eb, #6d28d9);
     border: 2px solid #93c5fd;
     border-radius: 20px;
-
     box-shadow: 0 5px 20px rgba(37, 99, 235, 0.25);
     transition: 0.25s;
 }
@@ -654,16 +635,13 @@ body.feathers {
 .stats-container > a {
     display: inline-block;
     padding: 13px 25px;
-
     background: linear-gradient(135deg, #2563eb, #7c3aed);
     border: 2px solid #93c5fd;
     border-radius: 12px;
-
     color: white;
     text-decoration: none;
     font-size: 17px;
     font-weight: bold;
-
     transition: 0.2s;
 }
 
@@ -672,7 +650,7 @@ body.feathers {
     box-shadow: 0 0 20px rgba(147, 197, 253, 0.5);
 }
 
-/* ТЕЛЕФОНЫ */
+/* МОБИЛЬНАЯ СТРАНИЦА СТАТИСТИКИ */
 
 @media (max-width: 700px) {
     .stats-container {
@@ -703,7 +681,11 @@ body.feathers {
         font-size: 26px;
     }
 }
+
+/* РАСКЛАДКА КНОПОК НА ТЕЛЕФОНАХ */
+
 @media (max-width: 700px) {
+
     .controls {
         display: grid;
         grid-template-columns: 85px 85px;
@@ -711,12 +693,35 @@ body.feathers {
         align-items: start;
     }
 
+    .controls #resetButton {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
     .controls .stats-button {
+        grid-column: 2;
+        grid-row: 1;
         width: 85px;
         height: 90px;
         padding: 7px;
         font-size: 12px;
         gap: 5px;
         border-radius: 12px;
+    }
+
+    .controls #soundButton {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .controls #backgroundButton {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
     }
 }
