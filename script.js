@@ -25,13 +25,18 @@ const ranks = [
 
 function updateRank() {
     const rank = ranks.find(rank => totalClicks >= rank.clicks);
-
-    const newRank = rank
-        ? rank.title
-        : "🐣 Новичок";
+    const newRank = rank ? rank.title : "🐣 Новичок";
 
     if (currentRank !== "" && currentRank !== newRank) {
-        alert("🎉 Новое звание!\n" + newRank);
+        const notification = document.getElementById("rankNotification");
+        const notificationText = document.getElementById("rankNotificationText");
+
+        notificationText.textContent = newRank;
+        notification.classList.add("show");
+
+        setTimeout(() => {
+            notification.classList.remove("show");
+        }, 3000);
     }
 
     currentRank = newRank;
