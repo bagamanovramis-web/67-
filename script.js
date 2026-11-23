@@ -10,42 +10,47 @@ if (scoreElement && recordElement) {
     let clicks = Number(localStorage.getItem("clicks")) || 0;
     let record = Number(localStorage.getItem("record")) || 0;
     let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
-   // ПОЗДРАВЛЕНИЕ КОРОЛЕВЫ
 
-function checkQueenReward() {
-    if (
-        totalClicks >= 10000 &&
-        !localStorage.getItem("queenRewardUsed")
-    ) {
-        localStorage.setItem("queenRewardUsed", "yes");
+    /* =========================
+       ПОЗДРАВЛЕНИЕ КОРОЛЕВЫ
+    ========================= */
 
-      const modal = document.getElementById("queenModal");
-const video = document.getElementById("queenVideo");
+    function checkQueenReward() {
+        if (
+            totalClicks >= 10000 &&
+            !localStorage.getItem("queenRewardUsed")
+        ) {
+            const modal = document.getElementById("queenModal");
+            const video = document.getElementById("queenVideo");
 
-if (modal) {
-    localStorage.setItem("queenRewardUsed", "yes");
+            if (modal) {
+                localStorage.setItem("queenRewardUsed", "yes");
+                modal.style.display = "flex";
 
-            if (video) {
-                video.play().catch(() => {});
+                if (video) {
+                    video.play().catch(() => {});
+                }
             }
         }
     }
-}
 
-window.closeQueenModal = function() {
-    const modal = document.getElementById("queenModal");
-    const video = document.getElementById("queenVideo");
+    window.closeQueenModal = function() {
+        const modal = document.getElementById("queenModal");
+        const video = document.getElementById("queenVideo");
 
-    modal.style.display = "none";
+        if (modal) {
+            modal.style.display = "none";
+        }
 
-    if (video) {
-        video.pause();
-        video.currentTime = 0;
-    }
-};
+        if (video) {
+            video.pause();
+            video.currentTime = 0;
+        }
+    };
 
-// Проверка при запуске
-checkQueenReward();
+    // Проверка при запуске
+    checkQueenReward();
+
     let currentRank = "";
 
     const rankElement = document.getElementById("rank");
@@ -91,7 +96,10 @@ checkQueenReward();
     scoreElement.textContent = clicks;
     recordElement.textContent = record;
 
-    // Звук
+    /* =========================
+       ЗВУК
+    ========================= */
+
     const clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
     let soundEnabled = true;
 
@@ -106,17 +114,24 @@ checkQueenReward();
         }
     };
 
-    // Клик по Пипе
+    /* =========================
+       КЛИК ПО ПИПЕ
+    ========================= */
+
     window.clickButton = function() {
         if (soundEnabled) {
             const sound = clickSound.cloneNode();
             sound.play().catch(() => {});
         }
+
         clicks++;
         totalClicks++;
+
         localStorage.setItem("totalClicks", totalClicks);
+
         updateRank();
-checkQueenReward();
+        checkQueenReward();
+
         if (clicks > record) {
             record = clicks;
             localStorage.setItem("record", record);
@@ -139,7 +154,10 @@ checkQueenReward();
         }
     };
 
-    // Сброс кликов
+    /* =========================
+       СБРОС КЛИКОВ
+    ========================= */
+
     window.resetClicks = function() {
         clicks = 0;
 
@@ -147,8 +165,11 @@ checkQueenReward();
         scoreElement.textContent = clicks;
     };
 
-    // Смена фона
-   const backgrounds = ["blue", "white", "purple", "feathers"];
+    /* =========================
+       СМЕНА ФОНА
+    ========================= */
+
+    const backgrounds = ["blue", "white", "purple", "feathers"];
     let currentBackground = 0;
 
     window.changeBackground = function() {
@@ -213,7 +234,9 @@ checkQueenReward();
         localStorage.setItem("clicks", clicks);
         localStorage.setItem("totalClicks", totalClicks);
         localStorage.setItem(storageKey, "used");
-       checkQueenReward();
+
+        checkQueenReward();
+
         // Обновление рекорда
         if (clicks > record) {
             record = clicks;
