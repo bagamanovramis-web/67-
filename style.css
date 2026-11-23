@@ -600,8 +600,3 @@ body.feathers {
         height: 100%;
     }
 }
-@media (max-width: 700px) {
-    .about-layout {
-        flex-direction: column-reverse;
-    }
-}
