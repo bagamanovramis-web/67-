@@ -136,7 +136,20 @@ body {
 .game p {
     margin: 10px 0;
 }
+/* ЗВАНИЕ ПИПЫ */
 
+#rank {
+    display: inline-block;
+    margin: 8px 0;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #fde68a;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
 /* ИГРА СПРАВА */
 
 .right-game {
