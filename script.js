@@ -53,7 +53,7 @@ updateRank();
         clicks++;
        totalClicks++;
        localStorage.setItem("totalClicks", totalClicks);
-       upgradeRank();
+       updateRank();
 
         if (clicks > record) {
             record = clicks;
