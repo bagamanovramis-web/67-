@@ -138,6 +138,7 @@ window.activatePromo = function() {
        "PIPA2027": {
           clicks: 2027
    message: "Получено 2027 кликов!"
+};
     // ПРОВЕРКА КОДА
     if (!promoCodes[code]) {
         message.textContent = "❌ Неверный промокод!";
