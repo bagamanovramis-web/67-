@@ -133,11 +133,11 @@ window.activatePromo = function() {
         "PIPA100": {
             clicks: 10000,
             message: "👑 Получено 10 000 кликов!"
-        }
-    },
+        },
        "PIPA2027": {
           clicks: 2027,
    message: "Получено 2027 кликов!"
+          }
 };
     // ПРОВЕРКА КОДА
     if (!promoCodes[code]) {
