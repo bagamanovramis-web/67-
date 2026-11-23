@@ -1,5 +1,8 @@
 
-/* ОСНОВА */
+/* =========================
+   ОСНОВА
+========================= */
+
 * {
     box-sizing: border-box;
 }
@@ -10,9 +13,13 @@ body {
     text-align: center;
     min-height: 100vh;
     margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-/* ОБЩИЙ КОНТЕЙНЕР */
+/* =========================
+   ОСНОВНОЙ КЛИКЕР
+========================= */
+
 .game-container {
     position: relative;
     min-height: 100vh;
@@ -22,7 +29,7 @@ body {
     align-items: center;
     padding-top: 20px;
 }
-/* ИГРОВАЯ ЧАСТЬ */
+
 .game {
     text-align: center;
 }
@@ -39,7 +46,8 @@ h2 {
     font-size: 32px;
 }
 
-/* КНОПКА ПИПЫ */
+/* Кнопка Пипы */
+
 .game > button {
     background: transparent;
     border: none;
@@ -47,19 +55,25 @@ h2 {
     height: 200px;
     position: relative;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    outline: none;
 }
 
-button:active img {
-    transform: scale(0.8);
-}
-
-button img {
+.game > button img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
-/* БОКОВЫЕ КНОПКИ */
+.game > button:active img {
+    transform: scale(0.8);
+}
+
+/* Боковые кнопки */
+
 .controls {
     position: absolute;
     left: 20px;
@@ -82,7 +96,33 @@ button img {
     cursor: pointer;
 }
 
-/* ФОНЫ */
+/* =========================
+   О ФИПЕ
+========================= */
+
+.about {
+    width: min(600px, 90%);
+    margin: 0 auto 25px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+}
+
+.about h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.about p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* =========================
+   ФОНЫ
+========================= */
+
 body.blue {
     background: linear-gradient(135deg, #172554, #2563eb, #0f172a);
 }
@@ -101,7 +141,10 @@ body.purple {
     );
 }
 
-/* АНИМАЦИЯ +1 */
+/* =========================
+   АНИМАЦИЯ +1
+========================= */
+
 .plus-one {
     position: absolute;
     top: 10%;
@@ -125,7 +168,10 @@ body.purple {
     }
 }
 
-/* ВЕРСИЯ */
+/* =========================
+   ВЕРСИЯ
+========================= */
+
 .version {
     position: fixed;
     right: 10px;
@@ -134,7 +180,71 @@ body.purple {
     color: #eaf3ff;
 }
 
-/* МОБИЛЬНАЯ ВЕРСИЯ */
+/* =========================
+   МИНИ-ИГРА
+========================= */
+
+.mini-game {
+    width: min(600px, 90%);
+    margin: 30px auto;
+    text-align: center;
+}
+
+.mini-game-area {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+    touch-action: none;
+}
+
+/* Пипа в мини-игре */
+
+#miniPipa {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Кнопка начала игры */
+
+#startMiniGame {
+    background: #2563eb;
+    color: white;
+    border: 2px solid #93c5fd;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Ссылка назад */
+
+.mini-game a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.mini-game a:hover {
+    color: #93c5fd;
+}
+
+/* =========================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================= */
+
 @media (max-width: 600px) {
 
     .game-container {
@@ -161,13 +271,11 @@ body.purple {
         font-size: 32px;
     }
 
-    /* КНОПКА ПИПЫ */
     .game > button {
         width: 180px;
         height: 180px;
     }
 
-    /* ДЛИННЫЕ КНОПКИ СЛЕВА */
     .controls {
         left: 8px;
         width: 58px;
@@ -184,124 +292,19 @@ body.purple {
         overflow-wrap: anywhere;
         border-radius: 10px;
     }
-}
-.game > button {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-user-select: none;
-    user-select: none;
-    outline: none;
+
+    .mini-game {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .mini-game-area {
+        height: 350px;
+    }
+
+    #miniPipa {
+        width: 70px;
+        height: 70px;
+    }
 }
 
-.game > button img {
-    -webkit-user-drag: none;
-    pointer-events: none;
-}
-.about {
-    width: min (600px, 90%);
-    margin: 0 auto 25px;
-    padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 15px;
-}
-
-.about h2 {
-    margin-top: 0;
-    font-size: 24px;
-}
-
-.about p {
-    font-size: 16px;
-    line-height: 1.5;
-}
-.mini-game {
-    width: min(600px, 90%);
-    margin: 30px auto;
-    text-align: center;
-}
-
-.mini-game-area {
-    width: 100%;
-    height: 350px;
-    position: relative;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.12);
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 15px;
-}
-
-#miniPipa {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 45px;
-}
-
-#startMiniGame {
-    background: #2563eb;
-    color: white;
-    border: 2px solid #93c5fd;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 16px;
-    cursor: pointer;
-}
-#miniPipa {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 45px;
-    line-height: 1;
-    display: block;
-    z-index: 2;
-}
-/* Мини-игра */
-.mini-game {
-    width: min(600px, 90%);
-    margin: 30px auto;
-    text-align: center;
-}
-
-.mini-game-area {
-    width: 100%;
-    height: 350px;
-    position: relative;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.12);
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 15px;
-}
-
-/* Пипа */
-#miniPipa {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Кнопка старта */
-#startMiniGame {
-    background: #2563eb;
-    color: white;
-    border: 2px solid #93c5fd;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 16px;
-    cursor: pointer;
-}
-.mini-game a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.mini-game a:hover {
-    color: #93c5fd;
-}
