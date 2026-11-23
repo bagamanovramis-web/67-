@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -37,20 +38,18 @@
             <button class="pipa-button" onclick="clickButton()">
                 <img src="button_transparent.png" alt="Пипа">
             </button>
-            <h2 id="score">
-                0
-            </h2>
-            <p id="rank">
-                🐣 Новичок
-            </p>
-            <p>Рекорд: <span id="record">
-                0
-            </span>
-            </p>
-           <div id="rankNotification" class="rank-notification">
-    <strong>🎉 НОВОЕ ЗВАНИЕ!</strong>
-    <span id="rankNotificationText"></span>
-</div>
+
+            <h2 id="score">0</h2>
+
+            <p id="rank">🐣 Новичок</p>
+
+            <p>Рекорд: <span id="record">0</span></p>
+
+            <div id="rankNotification" class="rank-notification">
+                <strong>🎉 НОВОЕ ЗВАНИЕ!</strong>
+                <span id="rankNotificationText"></span>
+            </div>
+
         </div>
 
         <div class="right-game">
@@ -58,13 +57,42 @@
                 🌾 Покормить Пипу
             </button>
         </div>
+
     </div>
 </div>
+
+<!-- ПРОМОКОДЫ -->
+
 <div class="promo-box">
     <input type="text" id="promoInput" placeholder="Промокод">
     <button onclick="activatePromo()">Активировать</button>
     <p id="promoMessage"></p>
 </div>
 
-<div class="version">Pipa Clicker v0.7</div></body>
+<div class="version">Pipa Clicker v0.7</div>
+
+<!-- ПОЗДРАВЛЕНИЕ КОРОЛЕВЫ -->
+
+<div id="queenModal" class="queen-modal">
+
+    <div class="queen-content">
+
+        <h2>👑 КОРОЛЕВА ПИПА ПОЗДРАВЛЯЕТ ТЕБЯ!</h2>
+
+        <video id="queenVideo"
+               src="21645712034339.mp4"
+               controls
+               autoplay
+               playsinline>
+        </video>
+
+        <p>🎉 Ты набрал 10 000 общих кликов!</p>
+
+        <button onclick="closeQueenModal()">Закрыть</button>
+
+    </div>
+
+</div>
+
+</body>
 </html>
