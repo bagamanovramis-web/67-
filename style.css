@@ -421,3 +421,19 @@ body.purple {
     font-size: 13px;
     color: #fde68a;
 }
+/* ФОН С ПЕРЬЯМИ */
+
+body.feathers {
+    background-image: url("./Небесная буря перьев.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@media (max-width: 700px) {
+    body.feathers {
+        background-image: url("./Парящие перья в небесной дымке.webp");
+        background-attachment: scroll;
+    }
+}
