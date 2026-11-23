@@ -112,13 +112,11 @@ checkQueenReward();
             const sound = clickSound.cloneNode();
             sound.play().catch(() => {});
         }
-
         clicks++;
         totalClicks++;
-
         localStorage.setItem("totalClicks", totalClicks);
         updateRank();
-
+checkQueenReward();
         if (clicks > record) {
             record = clicks;
             localStorage.setItem("record", record);
