@@ -703,3 +703,20 @@ body.feathers {
         font-size: 26px;
     }
 }
+@media (max-width: 700px) {
+    .controls {
+        display: grid;
+        grid-template-columns: 85px 85px;
+        gap: 12px;
+        align-items: start;
+    }
+
+    .controls .stats-button {
+        width: 85px;
+        height: 90px;
+        padding: 7px;
+        font-size: 12px;
+        gap: 5px;
+        border-radius: 12px;
+    }
+}
