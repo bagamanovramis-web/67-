@@ -17,10 +17,11 @@ body {
     position: relative;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    padding-top: 20px;
 }
-
 /* ИГРОВАЯ ЧАСТЬ */
 .game {
     text-align: center;
@@ -194,4 +195,22 @@ body.purple {
 .game > button img {
     -webkit-user-drag: none;
     pointer-events: none;
+}
+.about {
+    width: min (600px, 90%);
+    margin: 0 auto 25px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+}
+
+.about h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.about p {
+    font-size: 16px;
+    line-height: 1.5;
 }
