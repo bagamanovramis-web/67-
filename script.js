@@ -104,7 +104,49 @@ updateRank();
         document.body.className = backgrounds[currentBackground];
     }
 }
+/* =========================
+   ПРОМОКОДЫ
+========================= */
 
+function activatePromo() {
+    const input = document.getElementById("promoInput");
+    const message = document.getElementById("promoMessage");
+
+    const code = input.value.trim().toUpperCase();
+
+    if (code === "PIPA67") {
+        if (localStorage.getItem("promo_PIPA67")) {
+            message.textContent = "❌ Промокод уже использован!";
+            return;
+        }
+
+        let clicks = Number(localStorage.getItem("clicks")) || 0;
+        let totalClicks = Number(localStorage.getItem("totalClicks")) || 0;
+
+        clicks += 67000;
+        totalClicks += 67000;
+
+        localStorage.setItem("clicks", clicks);
+        localStorage.setItem("totalClicks", totalClicks);
+        localStorage.setItem("promo_PIPA67", "used");
+
+        document.getElementById("score").textContent = clicks;
+
+        const record = Number(localStorage.getItem("record")) || 0;
+
+        if (clicks > record) {
+            localStorage.setItem("record", clicks);
+            document.getElementById("record").textContent = clicks;
+        }
+
+        message.textContent = "🎉 Получено 67 000 кликов!";
+        input.value = "";
+
+        return;
+    }
+
+    message.textContent = "❌ Неверный промокод!";
+}
 /* =========================
    МИНИ-ИГРА
 ========================= */
