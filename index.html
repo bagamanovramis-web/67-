@@ -4,36 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Кликер Пипа</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
 <div class="game-container">
 
-   <div class="about-layout">
-    <div class="about">
-        <h2>О Пипе 🦜</h2>
-        <p>
-            Пипа - волнистый попугайчик и главная героиня этой игры.
-            Она любит чумизу, свой стенд и фрукты.
-            Именно Пипа вдохновила меня создать этот кликер!
-        </p>
+    <div class="about-layout">
+
+        <div class="about">
+            <h2>О Пипе 🦜</h2>
+            <p>
+                Пипа - волнистый попугайчик и главная героиня этой игры.
+                Она любит чумизу, свой стенд и фрукты.
+                Именно Пипа вдохновила меня создать этот кликер!
+            </p>
+        </div>
+
     </div>
-</div>
 
     <div class="main-layout">
 
         <div class="controls">
-            <a href="stats.html" class="stats-button">
-    📊
-    <span>Статистика</span>
-</a>
+
             <button id="resetButton" onclick="resetClicks()">Сбросить клики</button>
+
+            <a href="stats.html" class="stats-button">
+                📊
+                <span>Статистика</span>
+            </a>
+
             <button id="soundButton" onclick="toggleSound()">Звук: Вкл.</button>
+
             <button id="backgroundButton" onclick="changeBackground()">Сменить фон</button>
+
         </div>
 
         <div class="game">
@@ -85,7 +92,7 @@
 
         <h2>👑 КОРОЛЕВА ПИПА ПОЗДРАВЛЯЕТ ТЕБЯ!</h2>
 
-       <video id="queenVideo" src="21645712034339.mp4" controls playsinline></video>
+        <video id="queenVideo" src="21645712034339.mp4" controls playsinline></video>
 
         <p>🎉 Ты набрал 10 000 общих кликов!</p>
 
