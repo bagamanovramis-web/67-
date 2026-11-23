@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div class="game-container">
 
         <div class="about">
@@ -22,23 +23,20 @@
 
         <div class="side-buttons">
 
-    <div class="controls">
-        <button id="resetButton" onclick="resetClicks()">Сбросить клики</button>
-        <button id="soundButton" onclick="toggleSound()">Звук: Вкл.</button>
-        <button id="backgroundButton" onclick="changeBackground()">Сменить фон</button>
-    </div>
+            <div class="controls">
+                <button id="resetButton" onclick="resetClicks()">Сбросить клики</button>
+                <button id="soundButton" onclick="toggleSound()">Звук: Вкл.</button>
+                <button id="backgroundButton" onclick="changeBackground()">Сменить фон</button>
+            </div>
 
-    <div class="pipa-center">
-        <img src="button_transparent.png" alt="Пипа">
-    </div>
+            <div class="pipa-center">
+                <img src="button_transparent.png" alt="Пипа">
+            </div>
 
-    <button class="feed-button" onclick="location.href='minigame.html'">
-        🌾 Покормить Пипу
-    </button>
-</div>
             <button class="feed-button" onclick="location.href='minigame.html'">
                 🌾 Покормить Пипу
             </button>
+
         </div>
 
         <div class="game">
@@ -52,8 +50,10 @@
             <h2 id="score">0</h2>
             <p>Рекорд: <span id="record">0</span></p>
         </div>
+
     </div>
 
     <div class="version">Pipa Clicker v0.7</div>
+
 </body>
 </html>
