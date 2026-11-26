@@ -6,7 +6,7 @@
 const scoreElement = document.getElementById("score");
 const recordElement = document.getElementById("record");
 let soundEnabled = localStorage.getItem("pipaSound") !== "off";
-let currentLaunguage = localStorage.getItem("pipaLanguage") || "ru";
+let currentLanguage = localStorage.getItem("pipaLanguage") || "ru";
 
 if (scoreElement && recordElement) {
     let clicks = Number(localStorage.getItem("clicks")) || 0;
