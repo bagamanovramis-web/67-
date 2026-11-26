@@ -184,79 +184,81 @@ if (scoreElement && recordElement) {
     /* =========================
        ПРОМОКОДЫ
     ========================= */
+let promoMessageTimer;
 
-    window.activatePromo = function() {
-        const input = document.getElementById("promoInput");
-        const message = document.getElementById("promoMessage");
+window.activatePromo = function() {
+    const input = document.getElementById("promoInput");
+    const message = document.getElementById("promoMessage");
 
-        if (!input || !message) return;
+    if (!input || !message) return;
 
-        const code = input.value.trim().toUpperCase();
+    const code = input.value.trim().toUpperCase();
 
-        const promoCodes = {
-            "PIPA67": {
-                clicks: 6767,
-                message: "🎉 Получено 6767 кликов!"
-            },
+    function showPromoMessage(text) {
+        message.textContent = text;
 
-            "PIPA100": {
-                clicks: 10000,
-                message: "👑 Получено 10 000 кликов!"
-            },
+        clearTimeout(promoMessageTimer);
 
-            "PIPA2027": {
-                clicks: 2027,
-                message: "🎊 Получено 2027 кликов!"
+        promoMessageTimer = setTimeout(() => {
+            message.textContent = "";
+        }, 2500);
+    }
+
+    const promoCodes = {
+        "PIPA67": {
+            clicks: 6767,
+            message: "🎉 Получено 6767 кликов!"
         },
-           "PIPA^&": {
-           clicks: 676767
-           message: "👑 Активирован секретный промокод"
-    },
+        "PIPA100": {
+            clicks: 10000,
+            message: "👑 Получено 10 000 кликов!"
+        },
+        "PIPA2027": {
+            clicks: 2027,
+            message: "🎊 Получено 2027 кликов!"
+        },
+        "PIPA^&": {
+            clicks: 676767,
+            message: "👑 Активирован секретный промокод"
+        }
     };
 
-        // Проверка промокода
-        if (!promoCodes[code]) {
-            message.textContent = "❌ Неверный промокод!";
-            return;
-        }
+    if (!promoCodes[code]) {
+        showPromoMessage("❌ Неверный промокод!");
+        return;
+    }
 
-        // Проверка повторного использования
-        const storageKey = "promo_" + code;
+    const storageKey = "promo_" + code;
 
-        if (localStorage.getItem(storageKey)) {
-            message.textContent = "❌ Промокод уже использован!";
-            return;
-        }
+    if (localStorage.getItem(storageKey)) {
+        showPromoMessage("❌ Промокод уже использован!");
+        return;
+    }
 
-        // Начисление кликов
-        const bonus = promoCodes[code].clicks;
+    const bonus = promoCodes[code].clicks;
 
-        clicks += bonus;
-        totalClicks += bonus;
+    clicks += bonus;
+    totalClicks += bonus;
 
-        localStorage.setItem("clicks", clicks);
-        localStorage.setItem("totalClicks", totalClicks);
-        localStorage.setItem(storageKey, "used");
+    localStorage.setItem("clicks", clicks);
+    localStorage.setItem("totalClicks", totalClicks);
+    localStorage.setItem(storageKey, "used");
 
-        checkQueenReward();
+    checkQueenReward();
 
-        // Обновление рекорда
-        if (clicks > record) {
-            record = clicks;
-            localStorage.setItem("record", record);
-        }
+    if (clicks > record) {
+        record = clicks;
+        localStorage.setItem("record", record);
+    }
 
-        // Обновление интерфейса
-        scoreElement.textContent = clicks;
-        recordElement.textContent = record;
+    scoreElement.textContent = clicks;
+    recordElement.textContent = record;
 
-        updateRank();
+    updateRank();
 
-        message.textContent = promoCodes[code].message;
-        input.value = "";
-    };
-}
-
+    showPromoMessage(promoCodes[code].message);
+    input.value = "";
+};
 /* =========================
    МИНИ-ИГРА
 ========================= */
