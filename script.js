@@ -207,12 +207,11 @@ if (scoreElement && recordElement) {
             "PIPA2027": {
                 clicks: 2027,
                 message: "🎊 Получено 2027 кликов!"
-            }
         },
            "PIPA^&": {
            clicks: 676767
            message: "👑 Активирован секретный промокод"
-        }
+    },
     };
 
         // Проверка промокода
