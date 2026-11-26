@@ -433,6 +433,15 @@ const applySettings = document.getElementById("applySettings");
 
 const languageSelect = document.getElementById("languageSelect");
 const soundSelect = document.getElementById("soundSelect");
+if (languageSelect) {
+    languageSelect.value =
+        localStorage.getItem("pipaLanguage") || "ru";
+}
+
+if (soundSelect) {
+    soundSelect.value =
+        localStorage.getItem("pipaSound") || "on";
+}
 
 if (settingsButton && settingsModal) {
     settingsButton.addEventListener("click", () => {
