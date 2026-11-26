@@ -532,6 +532,8 @@ function changeLanguage(lang) {
     document.getElementById("closeSettings").textContent = t.close;
     document.getElementById("queenTitle").textContent = t.queenTitle;
     document.getElementById("queenText").textContent = t.queenText;
+   document.getElementById("rankNotificationTitle").textContent =
+    lang === "en" ? "🎉 NEW RANK!" : "🎉 НОВОЕ ЗВАНИЕ!";
 }
 
 changeLanguage(currentLanguage);
