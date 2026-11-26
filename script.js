@@ -4,7 +4,7 @@
 ========================= */
 
 const scoreElement = document.getElementById("score");
-const recordElement = document.getElementById("record");\
+const recordElement = document.getElementById("record");
 let soundEnabled = localStorage.getItem("pipaSound") !== "off";
 
 if (scoreElement && recordElement) {
