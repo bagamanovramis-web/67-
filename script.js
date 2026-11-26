@@ -422,3 +422,22 @@ if (miniArea) {
         }, 30000);
     });
 }
+/* =========================
+   МЕНЮ НАСТРОЕК
+========================= */
+
+const settingsButton = document.getElementById("settingsButton");
+const settingsModal = document.getElementById("settingsModal");
+const closeSettings = document.getElementById("closeSettings");
+
+if (settingsButton && settingsModal) {
+    settingsButton.addEventListener("click", () => {
+        settingsModal.style.display = "flex";
+    });
+}
+
+if (closeSettings && settingsModal) {
+    closeSettings.addEventListener("click", () => {
+        settingsModal.style.display = "none";
+    });
+}
