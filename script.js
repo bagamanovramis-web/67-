@@ -6,6 +6,7 @@
 const scoreElement = document.getElementById("score");
 const recordElement = document.getElementById("record");
 let soundEnabled = localStorage.getItem("pipaSound") !== "off";
+let currentLaunguage = localStorage.getItem("pipaLanguage") || "ru";
 
 if (scoreElement && recordElement) {
     let clicks = Number(localStorage.getItem("clicks")) || 0;
@@ -56,20 +57,22 @@ if (scoreElement && recordElement) {
 
     const rankElement = document.getElementById("rank");
 
-    const ranks = [
-        { clicks: 100000, title: "💎 Правая лапа Пипы" },
-        { clicks: 10000, title: "🧹 Прислуга Пипы" },
-        { clicks: 5000, title: "⭐ Легенда Пипы" },
-        { clicks: 1000, title: "👑 Поклонник Королевы" },
-        { clicks: 500, title: "🍎 Поставщик вкусняшек" },
-        { clicks: 100, title: "🌾 Любитель чумизы" },
-        { clicks: 1, title: "🐥 Знакомый Пипы" }
-    ];
+  const ranks = [
+    { clicks: 100000, ru: "💎 Правая лапа Пипы", en: "💎 Pipa's Right Hand" },
+    { clicks: 10000, ru: "🧹 Прислуга Пипы", en: "🧹 Pipa's Servant" },
+    { clicks: 5000, ru: "⭐ Легенда Пипы", en: "⭐ Pipa's Legend" },
+    { clicks: 1000, ru: "👑 Поклонник Королевы", en: "👑 Queen's Fan" },
+    { clicks: 500, ru: "🍎 Поставщик вкусняшек", en: "🍎 Treat Supplier" },
+    { clicks: 100, ru: "🌾 Любитель чумизы", en: "🌾 Chumiza Lover" },
+    { clicks: 1, ru: "🐥 Знакомый Пипы", en: "🐥 Pipa's Acquaintance" }
+];
 
     // Звания
     function updateRank() {
         const rank = ranks.find(rank => totalClicks >= rank.clicks);
-        const newRank = rank ? rank.title : "🐣 Новичок";
+const newRank = rank
+    ? (currentLanguage === "en" ? rank.en : rank.ru)
+    : (currentLanguage === "en" ? "🐣 Newbie" : "🐣 Новичок");
 
         if (currentRank !== "" && currentRank !== newRank) {
             const notification = document.getElementById("rankNotification");
