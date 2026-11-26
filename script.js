@@ -4,7 +4,8 @@
 ========================= */
 
 const scoreElement = document.getElementById("score");
-const recordElement = document.getElementById("record");
+const recordElement = document.getElementById("record");\
+let soundEnabled = localStorage.getItem("pipaSound") !== "off";
 
 if (scoreElement && recordElement) {
     let clicks = Number(localStorage.getItem("clicks")) || 0;
@@ -101,7 +102,6 @@ if (scoreElement && recordElement) {
     ========================= */
 
     const clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
-  let soundEnabled = localStorage.getItem("pipaSound") !== "off";
     /* =========================
        КЛИК ПО ПИПЕ
     ========================= */
