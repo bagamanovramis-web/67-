@@ -450,6 +450,7 @@ if (closeSettings && settingsModal) {
 if (applySettings) {
     applySettings.addEventListener("click", () => {
         localStorage.setItem("pipaLanguage", languageSelect.value);
+       changeLanguage(languageSelect.value);
         localStorage.setItem("pipaSound", soundSelect.value);
        soundEnabled = soundSelect.value === "on";
         settingsModal.style.display = "none";
