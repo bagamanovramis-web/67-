@@ -531,10 +531,6 @@ function changeLanguage(lang) {
     document.getElementById("closeSettings").textContent = t.close;
     document.getElementById("queenTitle").textContent = t.queenTitle;
     document.getElementById("queenText").textContent = t.queenText;
-
-    if (rankElement) {
-        updateRank();
-    }
 }
 
 changeLanguage(currentLanguage);
