@@ -27,9 +27,10 @@ if (scoreElement && recordElement) {
                 localStorage.setItem("queenRewardUsed", "yes");
                 modal.style.display = "flex";
 
-                if (video) {
-                    video.play().catch(() => {});
-                }
+               if (video) {
+    video.muted = !soundEnabled;
+    video.play().catch(() => {});
+}
             }
         }
     }
