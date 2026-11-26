@@ -455,3 +455,86 @@ if (applySettings) {
         settingsModal.style.display = "none";
     });
 }
+/* =========================
+   ПЕРЕВОД ИНТЕРФЕЙСА
+========================= */
+
+function changeLanguage(lang) {
+    currentLanguage = lang;
+
+    const translations = {
+        ru: {
+            aboutTitle: "О Пипе 🦜",
+            aboutText: "Пипа - волнистый попугайчик и главная героиня этой игры. Она любит чумизу, свой стенд и фрукты. Именно Пипа вдохновила меня создать этот кликер!",
+            reset: "Сбросить клики",
+            stats: "Статистика",
+            background: "Сменить фон",
+            title: "ПИПА КЛИКЕР",
+            subtitle: "КЛИКАЙ НА ПИПУ",
+            record: "Рекорд:",
+            feed: "🌾 Покормить Пипу",
+            promoPlaceholder: "Промокод",
+            promoActivate: "Активировать",
+            settingsTitle: "⚙️ Настройки",
+            language: "Язык:",
+            sound: "Звук:",
+            soundOn: "Включён",
+            soundOff: "Выключен",
+            apply: "Применить",
+            close: "Закрыть",
+            queenTitle: "👑 КОРОЛЕВА ПИПА ПОЗДРАВЛЯЕТ ТЕБЯ!",
+            queenText: "🎉 Ты набрал 10 000 общих кликов!"
+        },
+        en: {
+            aboutTitle: "About Pipa 🦜",
+            aboutText: "Pipa is a budgie and the main character of this game. She loves millet, her stand and fruit. Pipa inspired me to create this clicker!",
+            reset: "Reset clicks",
+            stats: "Statistics",
+            background: "Change background",
+            title: "PIPA CLICKER",
+            subtitle: "CLICK ON PIPA",
+            record: "Record:",
+            feed: "🌾 Feed Pipa",
+            promoPlaceholder: "Promo code",
+            promoActivate: "Activate",
+            settingsTitle: "⚙️ Settings",
+            language: "Language:",
+            sound: "Sound:",
+            soundOn: "On",
+            soundOff: "Off",
+            apply: "Apply",
+            close: "Close",
+            queenTitle: "👑 QUEEN PIPA CONGRATULATES YOU!",
+            queenText: "🎉 You reached 10,000 total clicks!"
+        }
+    };
+
+    const t = translations[lang] || translations.ru;
+
+    document.getElementById("aboutTitle").textContent = t.aboutTitle;
+    document.getElementById("aboutText").textContent = t.aboutText;
+    document.getElementById("resetButton").textContent = t.reset;
+    document.querySelector(".stats-button span").textContent = t.stats;
+    document.getElementById("backgroundButton").textContent = t.background;
+    document.getElementById("mainTitle").textContent = t.title;
+    document.getElementById("mainSubtitle").textContent = t.subtitle;
+    document.getElementById("recordLabel").textContent = t.record;
+    document.getElementById("feedButton").textContent = t.feed;
+    document.getElementById("promoInput").placeholder = t.promoPlaceholder;
+    document.getElementById("promoActivate").textContent = t.promoActivate;
+    document.getElementById("settingsTitle").textContent = t.settingsTitle;
+    document.getElementById("languageLabel").textContent = t.language;
+    document.getElementById("soundLabel").textContent = t.sound;
+    document.getElementById("soundOn").textContent = t.soundOn;
+    document.getElementById("soundOff").textContent = t.soundOff;
+    document.getElementById("applySettings").textContent = t.apply;
+    document.getElementById("closeSettings").textContent = t.close;
+    document.getElementById("queenTitle").textContent = t.queenTitle;
+    document.getElementById("queenText").textContent = t.queenText;
+
+    if (rankElement) {
+        updateRank();
+    }
+}
+
+changeLanguage(currentLanguage);
