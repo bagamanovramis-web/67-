@@ -259,6 +259,7 @@ window.activatePromo = function() {
     showPromoMessage(promoCodes[code].message);
     input.value = "";
 };
+}
 /* =========================
    МИНИ-ИГРА
 ========================= */
@@ -420,5 +421,4 @@ if (miniArea) {
             }
         }, 30000);
     });
-}
 }
