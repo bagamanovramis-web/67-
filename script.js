@@ -429,6 +429,10 @@ if (miniArea) {
 const settingsButton = document.getElementById("settingsButton");
 const settingsModal = document.getElementById("settingsModal");
 const closeSettings = document.getElementById("closeSettings");
+const applySettings = document.getElementById("applySettings");
+
+const languageSelect = document.getElementById("languageSelect");
+const soundSelect = document.getElementById("soundSelect");
 
 if (settingsButton && settingsModal) {
     settingsButton.addEventListener("click", () => {
@@ -438,6 +442,15 @@ if (settingsButton && settingsModal) {
 
 if (closeSettings && settingsModal) {
     closeSettings.addEventListener("click", () => {
+        settingsModal.style.display = "none";
+    });
+}
+
+if (applySettings) {
+    applySettings.addEventListener("click", () => {
+        localStorage.setItem("pipaLanguage", languageSelect.value);
+        localStorage.setItem("pipaSound", soundSelect.value);
+
         settingsModal.style.display = "none";
     });
 }
