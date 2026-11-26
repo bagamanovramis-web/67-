@@ -100,19 +100,7 @@ if (scoreElement && recordElement) {
     ========================= */
 
     const clickSound = new Audio("pipa_chirp (1)-[AudioTrimmer.com].mp3");
-    let soundEnabled = true;
-
-    window.toggleSound = function() {
-        soundEnabled = !soundEnabled;
-
-        const soundButton = document.getElementById("soundButton");
-
-        if (soundButton) {
-            soundButton.textContent =
-                soundEnabled ? "Звук: Вкл." : "Звук: Выкл.";
-        }
-    };
-
+  let soundEnabled = localStorage.getItem("pipaSound") !== "off";
     /* =========================
        КЛИК ПО ПИПЕ
     ========================= */
@@ -459,7 +447,7 @@ if (applySettings) {
     applySettings.addEventListener("click", () => {
         localStorage.setItem("pipaLanguage", languageSelect.value);
         localStorage.setItem("pipaSound", soundSelect.value);
-
+       soundEnabled = soundSelect.value === "on";
         settingsModal.style.display = "none";
     });
 }
