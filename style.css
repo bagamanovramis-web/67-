@@ -336,10 +336,18 @@ body.purple {
 }
 
 #promoMessage {
-    width: 100%;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 0;
+    width: max-content;
+    max-width: calc(100vw - 20px);
     margin: 0;
-    font-size: 13px;
+    padding: 6px 9px;
+    font-size: 12px;
     color: #fde68a;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 7px;
+    box-sizing: border-box;
 }
 
 /* ФОН С ПЕРЬЯМИ */
@@ -645,10 +653,18 @@ body.feathers {
 }
 
 #promoMessage {
-    width: 100%;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 0;
+    width: max-content;
+    max-width: calc(100vw - 20px);
     margin: 0;
-    font-size: 13px;
+    padding: 6px 9px;
+    font-size: 12px;
     color: #fde68a;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 7px;
+    box-sizing: border-box;
 }
 
     /* МИНИ-ИГРА */
